@@ -1,6 +1,6 @@
 # Paper files
 
-One file per paper. Letters and calibration live in [`RUBRICS.md`](../RUBRICS.md). Suites and upstream SOTA live in [`BENCHMARKS.md`](../BENCHMARKS.md).
+One file per paper. Letters and calibration live in [`RUBRICS.md`](../RUBRICS.md). Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](../BENCHMARKS.md). Official task sets, pins, and L/R live in [`UPSTREAM_BENCHMARKS.md`](../UPSTREAM_BENCHMARKS.md).
 
 Each file was written from the preprint plus the official repo when one exists. Third-party reimplementations are named and not used as the experimental harness.
 

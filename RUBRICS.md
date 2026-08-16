@@ -225,7 +225,7 @@ Until a level-2 card is filled, RSI stays 0 or 1, including papers with "Gödel"
 
 ## Grade board (code-checked 16 August 2026)
 
-Letters live here. Evidence lives in [`papers/`](papers/). Upstream suite notes live in [`BENCHMARKS.md`](BENCHMARKS.md).
+Letters live here. Evidence lives in [`papers/`](papers/). Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](BENCHMARKS.md). Official task sets, pins, and L/R live in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md).
 
 **Cite the row, not the PDF.** GEPA is B+ only for the main train/validation/test tables. KernelBench in the same paper is D.
 
