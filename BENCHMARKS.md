@@ -1,5 +1,7 @@
 # Benchmarks this cohort used
 
+Definitions, version pins, and the L/R ladder for 47 upstream suites are in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md).
+
 SOTA here means the **upstream** suite, not the best number inside these 16 papers. Snapshot date: **16 August 2026**.
 
 When a paper reports a slice (MATH 617 level-5, ARC Easy ≤5×5, SWE 60 Django/Sphinx, AIME 2024 in-sample), that number is not the official leaderboard. Grade the experiment; look here for what the suite actually is.
