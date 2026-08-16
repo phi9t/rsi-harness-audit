@@ -633,3 +633,62 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Sketch (not a real item):** Two example pairs recolor a shape only when it touches a marker; apply that rule to a new grid.
 **Do not mix:** Not ARC-AGI-1. Not this cohort's ARC Easy ≤5×5 slice (ADAS: 20 val / 60 test).
 
+## Operational ladder (all 47)
+
+Order is by how much world the agent must handle, not by leaderboard hardness.
+
+| Level | Benchmarks |
+|---|---|
+| L0 | AIME 2026 (R4); GPQA Diamond (R5); FrontierMath (R5) |
+| L1 | IFBench (R2); ScreenSpot-Pro (R2); LiveCodeBench (R3); BigCodeBench (R3); SciCode (R5); ARC-AGI-2 (R5) |
+| L2 | OmniDocBench v1.5 (R2); RULER (R2); MathVista (R3); CharXiv (R4); MMMU-Pro (R4); Video-MMMU (R4); AA-LCR (R4); BEAM (R4); LongBench v2 (R4); CIMemories (R4); Humanity’s Last Exam (R5) |
+| L3 | BFCL V4 (R2); GAIA (R4); LongMemEval-V2 (R4) |
+| L4 | ToolSandbox (R3); τ-bench (R3) |
+| L5 | MCP Atlas (R3); SkillsBench (R3); OSWorld v1 (R3); SWE-bench Verified (R3); WebArena (R3); VisualWebArena (R3); MCP-Universe (R3); SWE-bench Multilingual (R3); DeepSearchQA (R4); BrowseComp (R4); τ-Knowledge / τ-Banking (R4); SWE-bench Pro (R4); Terminal-Bench 2.1 (R4); AppWorld (R4) |
+| L6 | AgentDojo (R3); AgentHarm (R3); WildClawBench (R4); GAIA2 (R4); OSWorld 2.0 (R4) |
+| L7 | GDPval (R4); PaperBench (R5); ResearchClawBench (R5) |
+
+## Capability tracks
+
+Compare along a track, not as one leaderboard.
+
+**Tools and state.** BFCL V4 (call shape) → ToolSandbox (dependencies, clarification, device state) → τ-bench (users, policy, pass^k) → MCP Atlas / AppWorld (many tools, cross-app) → GAIA2 (events and time).
+
+**GUI and computer use.** ScreenSpot-Pro (where to click) → VisualWebArena (browser sequence) → OSWorld v1 (desktop completion) → OSWorld 2.0 / WildClawBench (long, changing workflows).
+
+**Coding and research.** LiveCodeBench / BigCodeBench → SciCode → SWE-bench Verified → Terminal-Bench 2.1 → PaperBench → ResearchClawBench.
+
+**Long context and memory.** RULER (controlled needles) → LongBench v2 / AA-LCR (realistic long input) → BEAM (conversation state) → LongMemEval-V2 (memory over accumulated agent history).
+
+**Web research.** GAIA (short verifiable answer) → BrowseComp (one obscure fact) → DeepSearchQA (exhaustive set) → GDPval / ResearchClawBench (professional or scientific artifact).
+
+**Safety.** CIMemories (wrong disclosure from trusted memory) → AgentDojo (injections in untrusted tool data) → Prompt Siren on AgentDojo (stronger attacks; not a separate task set) → AgentHarm (harmful user goals and whether the agent can carry them out).
+
+## How to keep the authors’ definition
+
+A version is not only a JSON dump. Record:
+
+```yaml
+benchmark:
+  task_release: exact tag or dataset revision
+  task_manifest_hash: sha256
+  evaluator_commit: exact git commit
+  container_images: immutable digests
+  official_metric: exact implementation
+agent:
+  harness_commit: exact git commit
+  system_prompt_hash: sha256
+  tool_schema_hash: sha256
+  action_budget: exact limit
+  context_policy: exact truncation and summarization
+  retry_policy: exact behavior
+```
+
+Do not silently add capabilities: no tools on a no-tools set; no DOM on a screenshot-only set; no shell on a GUI set unless that condition is named; no RAG on a long-context set unless labeled as a RAG-system result.
+
+Keep the authors’ metric: final-state checkers for OSWorld, WebArena, AppWorld, τ-bench, GAIA2; executable tests for SWE-bench, Terminal-Bench, LiveCodeBench, BigCodeBench, SciCode; point-in-box for ScreenSpot-Pro; set F1 for DeepSearchQA; claim coverage for MCP Atlas; rubrics for PaperBench and ResearchClawBench; benign utility **and** attack success for AgentDojo.
+
+For interactive tasks, report pass^k, not only the mean. Keep traces, timeouts, environment errors, tokens, wall time, and tool-call counts.
+
+Label the primary result as model + reasoning settings + harness + tools + environment version.
+
