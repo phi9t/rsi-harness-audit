@@ -15,9 +15,13 @@ A vendor table often mixes three objects. The **task set** is the items, environ
 | Scoring protocol | Hidden tests, final database state, point-in-box, rubric, or a model judge. |
 | Public split | The subset released for inspection. MCP Atlas: 1,000 tasks, 500 public. |
 | pass^k | Chance that k independent runs all succeed. τ-bench uses this instead of one lucky chat. |
+| pass@1 | One sample succeeds. SciCode, LiveCodeBench, and BigCodeBench report this. Not pass^k. |
 | Claim coverage | MCP Atlas credit on required atomic claims; pass if coverage is at least 0.75. |
 | Skill lift | SkillsBench: same task with vs without a curated skill bundle. |
 | fail-to-pass | New tests that fail on the original code and must pass after the patch. SWE-bench Pro resolve rate requires this plus no regressions. |
+| AST | Call structure, not a string match. BFCL V4 scores single-turn live/non-live this way. |
+| Milestones | Required events in a directed acyclic graph (tool calls and database snapshots). ToolSandbox maps turns onto these. |
+| Minefields | Events that must not occur. ToolSandbox zeros the trajectory if one matches. |
 | L0–L7 | How much of a changing world the agent must act in. FrontierMath is L0. OSWorld v1 is L5. |
 | R1–R5 | How deep the reasoning is. ScreenSpot-Pro is R2. FrontierMath is R5. |
 
@@ -266,7 +270,7 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Diagram / vendor label:** same as official name.
 **Source:** https://arxiv.org/html/2511.14937 (fetched 2026-08-16).
 
-**Given:** A synthetic user memory dump (natural-language statements about personal attributes) plus a task and a recipient (for example, write to a physician). Each attribute is labeled necessary, inappropriate, or ambiguous for that task; the same fact can be required in one context and banned in another. Reported runs concatenate memories as a prefix; they do not update a live store mid-task.
+**Given:** A synthetic user memory dump (natural-language statements about personal attributes) plus a task and a recipient (for example, write to a physician). Each attribute is labeled necessary or inappropriate for that task; unlabeled pairs are dropped when privacy personas disagree. The same fact can be required in one context and banned in another. Reported runs concatenate memories as a prefix; they do not update a live store mid-task.
 **Success:** A model judge (DeepSeek-R1 in the paper) marks which attribute values appeared in the reply. **Violation** is leaking an inappropriate attribute; **completeness** is sharing the necessary ones. Report both; silence looks private but fails completeness.
 **Size / pin:** Profiles can hold over 100 attributes (up to 189: seven per domain × nine domains × three events). The paper’s tables use 10 profiles and 49 seed contexts. Pin that reported slice vs a larger generation.
 **Level:** L2 / R4. Long static memory plus a policy choice of what to disclose, not a changing database.
