@@ -580,10 +580,10 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 
 **Given:** A synthetically generated long string at a chosen length (4K through 128K tokens in the README table). Thirteen task configs in four categories: retrieval (needle-in-a-haystack variants), multi-hop tracing (variable-name chains), aggregation (common or frequent words), and question answering (SQuAD or HotpotQA passages padded to length).
 **Success:** Automatic metrics per task, then an average across the 13 configs at each length. Effective length is the longest length that stays above a Llama-2-7B-at-4K threshold (85.6%).
-**Size / pin:** 13 synthetic tasks, 4 categories. Sequence length is a parameter, not a fixed corpus. Pin RULER, not a document-QA suite.
+**Size / pin:** 13 synthetic tasks, 4 categories, at lengths in the README’s 4K through 128K table. Pin that paper RULERv1 (`rulerv1-ns` pipeline) unless RULERv2 is named.
 **Level:** L2 / R2. Synthetic length tests; local recall and aggregation, not expert synthesis.
 **Sketch (not a real item):** Buried in 32k tokens of filler, two keys each map to several values; return every value for the queried keys.
-**Do not mix:** Configurable synthetic probes, not LongBench v2's realistic documents.
+**Do not mix:** Configurable synthetic probes, not LongBench v2's realistic documents. Not RULERv2 (`rulerv2-ns`).
 
 ### LongMemEval-V2
 
