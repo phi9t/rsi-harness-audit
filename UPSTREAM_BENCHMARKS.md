@@ -73,6 +73,8 @@ FrontierMath is L0/R5. OSWorld v1 is L5/R3. The first is deeper; the second is a
 
 Cards follow. Each was checked against the official page on the fetch date. Sketches are not real items.
 
+## General agents
+
 ### MCP Atlas
 
 **Diagram / vendor label:** MCP Atlas; vendor tables often show the 500-task public split.
@@ -169,6 +171,8 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Sketch (not a real item):** Fix spreadsheet formulas, chart them, insert the chart into a document, and export a PDF to the requested path.
 **Do not mix:** Not OSWorld 2.0. “Verified” is a snapshot of this v1 set.
 
+## Coding
+
 ### SWE-bench Pro
 
 **Diagram / vendor label:** same as official name; tables sometimes treat this as generic “SWE-bench.”
@@ -216,6 +220,8 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Level:** L1 / R5. Deterministic function tests at research-level science, not repository repair.
 **Sketch (not a real item):** Implement a stable numerical solver whose hidden tests check residuals against tight tolerances the prompt does not state.
 **Do not mix:** Functions and numeric/domain tests, not SWE-bench repo repair. Not with-background pass@1 and not the subproblem rate.
+
+## Multimodal, safety, and reasoning
 
 ### CharXiv
 
@@ -361,6 +367,8 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Sketch (not a real item):** After several corrections in a long travel chat, report the latest still-valid preference.
 **Do not mix:** BEAM-128K is 20 of 100 dialogues, not the whole benchmark. Not LongMemEval.
 
+## Coverage: tools, web, and computer
+
 ### GAIA
 
 **Diagram / vendor label:** same as official name.
@@ -480,6 +488,8 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Level:** L6 / R4. Hour-scale workflows that can change mid-run, not v1’s shorter desktop tasks.
 **Sketch (not a real item):** Register for a conference from a PDF call, an email thread, and a self-hosted portal; a new message mid-run changes the paper title; submit the corrected packet.
 **Do not mix:** Not OSWorld v1 (369 shorter desktop tasks).
+
+## Coverage: coding, research, long context, and frontier
 
 ### LiveCodeBench
 
