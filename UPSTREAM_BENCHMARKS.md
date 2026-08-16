@@ -110,7 +110,7 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Source:** https://arxiv.org/html/2605.10912v1 (fetched 2026-08-16).
 
 **Given:** A Markdown task spec inside a Docker container running a real CLI harness (OpenClaw, Claude Code, Codex, or Hermes Agent) with shell, browser, files, email, and optional skills. 36 English and 24 Chinese tasks; 26 of 60 are multimodal.
-**Success:** Hybrid grading: deterministic rule checks, an audit of environment side effects, and an LLM/VLM judge for semantic criteria. Ground-truth files are mounted only after the agent exits.
+**Success:** Hybrid grading: deterministic rule checks, an audit of environment side effects, and a language-model or vision-language-model judge for semantic criteria. Ground-truth files are mounted only after the agent exits.
 **Size / pin:** 60 human-authored tasks. Per-task budgets 300–1,200 seconds; typical runs take about eight minutes and more than 20 tool calls.
 **Level:** L6 / R4. Minutes of live-container work, including in-task injection and multimodal assets.
 **Sketch (not a real item):** Inspect a launch video and files, extract three clips, write a report, and ignore a hidden instruction asking for credentials.
@@ -134,7 +134,7 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Source:** https://facebookresearch.github.io/meta-agents-research-environments/ (fetched 2026-08-16); scoring from the same docs’ Gaia2 evaluation page and ARE, https://arxiv.org/html/2509.17158v1.
 
 **Given:** A simulated user universe (email, chats, calendar, files, shopping, cabs, and related apps). Time runs while the agent works; environment events change state. 11 apps across 10 universes.
-**Success:** The Meta Agents Research Environments (ARE) verifier matches the agent’s write actions to annotated ground-truth write events (oracle events), checking tool identity, arguments (exact match or a model judge on free text), causality, and timing. Pass@1 averaged over three runs.
+**Success:** The Meta Agents Research Environments (ARE) verifier matches the agent’s write actions to annotated ground-truth write events (oracle events), checking tool identity, arguments (exact match or a model judge on free text), causality, and timing. Mean success over three independent runs (the paper’s Pass@1). That is not pass^k (all k runs succeed).
 **Size / pin:** 800 core scenarios across 10 universes (160 per each of five core capabilities). Gaia2-mini is 160. Agent2Agent and Noise augmentations add 320 on mini (1,120 when counted together). Pin Gaia2, not original GAIA.
 **Level:** L6 / R4. Events, time, and other agents, not a static Q&A page.
 **Sketch (not a real item):** Schedule a meeting; a participant’s availability changes mid-run; revise the invite and notify only those affected before a deadline.
@@ -157,7 +157,7 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Diagram / vendor label:** OSWorld-Verified is a snapshot of OSWorld v1 tasks and graders, not a different family from OSWorld 2.0.
 **Source:** https://osworld-v1.xlang.ai/ (fetched 2026-08-16).
 
-**Given:** A real computer (Ubuntu; Windows and macOS also supported) with screen pixels plus mouse and keyboard. A task config restores an initial desktop state across web and desktop apps.
+**Given:** A real Ubuntu desktop with screen pixels plus mouse and keyboard. Windows and macOS environments exist; the 369-task set is the Ubuntu benchmark. A task config restores an initial desktop state across web and desktop apps.
 **Success:** Custom execution-based evaluation scripts that inspect files and application state, not the agent’s write-up. 134 such graders for 369 tasks.
 **Size / pin:** 369 computer tasks. Eight Google Drive tasks may be dropped (361) if they fail to initialize. Pin OSWorld v1 / OSWorld-Verified; OSWorld 2.0 is a later release.
 **Level:** L5 / R3. Open desktop with many apps and recovery, not a single widget.
