@@ -387,10 +387,10 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Source:** https://arxiv.org/html/2408.04682v2 (fetched 2026-08-16). The Apple landing page https://machinelearning.apple.com/research/toolsandbox-stateful-conversational-llm-benchmark was fetched the same day; it does not state the 1,032-case count.
 
 **Given:** A simulated user who replies during the conversation, 34 stateful tools across 11 domains (contacts, messaging, reminders, device settings, maps, weather, and related), and a mutable world state. Tools can depend on that state (for example, sending a text needs cellular on).
-**Success:** Human-authored **milestones** (required events in a directed graph: tool calls and database snapshots) versus **minefields** (events that must not occur, such as hallucinating a missing timestamp). A matched minefield zeros the trajectory score. Similarity is 0–1 over the best legal mapping of turns to milestones.
+**Success:** Human-authored **milestones** (required events in a directed acyclic graph: tool calls and database snapshots that may be reordered only when the graph allows it) versus **minefields** (events that must not occur, such as hallucinating a missing timestamp). A matched minefield zeros the trajectory score. Similarity is 0–1 over the best legal mapping of turns to milestones.
 **Size / pin:** 1,032 test scenarios. Pin this roster.
 **Level:** L4 / R3. User simulator, device state, and implicit tool dependencies, not a single stateless call.
-**Sketch (not a real item):** Send a text while cellular is off; enable it first. If the current time tool is withheld, refuse rather than invent a timestamp.
+**Sketch (not a real item):** Set a reminder at a named park while location services are off; enable them, then geocode. If the geocoding tool is withheld, refuse rather than invent coordinates.
 **Do not mix:** Milestones are required events; minefields are forbidden ones. Not BFCL’s single-turn AST check.
 
 ### τ-bench
@@ -402,7 +402,7 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Success:** Binary reward: the final database must match the unique annotated goal state, and user-facing replies must contain required facts. Repeated success is **pass^k**: the chance that k independent trials all succeed. Default comparison is pass^1.
 **Size / pin:** 115 retail tasks (15 APIs) and 50 airline tasks (13 APIs). Pin original τ-bench airline/retail.
 **Level:** L4 / R3. User, policy, and persistent database, not a one-shot function call.
-**Sketch (not a real item):** A user asks to change a basic-economy flight; refuse per policy, then cancel and rebook so the reservation table matches the allowed outcome.
+**Sketch (not a real item):** A user wants two extra checked bags on an existing reservation; charge only the extras allowed by membership and cabin class.
 **Do not mix:** Not τ-Knowledge / τ-Banking.
 
 ### WebArena
@@ -426,7 +426,7 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Success:** Execution-based rewards on the final page or a short answer (exact match, must-include, or a visual question-answering check on the resulting image). Success is whether the site state matches the goal, not a gold click path.
 **Size / pin:** 910 tasks from 314 templates. Pin VisualWebArena, not WebArena’s 812 text-web tasks.
 **Level:** L5 / R3. Self-hosted visual web with multi-step recovery, not a single click on a screenshot.
-**Sketch (not a real item):** Buy the green polo that matches an attached photo, not the similarly named blue one.
+**Sketch (not a real item):** On classifieds, comment on the listing whose photo shows a red bicycle, not the nearby text-only ad with the same title.
 **Do not mix:** Visual web, not WebArena’s text-web set.
 
 ### AppWorld
@@ -435,10 +435,10 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Source:** https://arxiv.org/html/2407.18901 (fetched 2026-08-16).
 
 **Given:** A day-to-day request over 9 simulated apps (email, payments, shopping, files, and related) exposed as 457 APIs, populated with about 100 fictitious users. The agent writes iterative code that calls APIs. Tasks span 1.8 apps and 9.5 APIs on average.
-**Success:** Hidden state-based unit tests (about 8 per task) inspect the database diff: required changes must be present, and unexpected collateral writes fail. Task Goal Completion is the share of tasks that pass every test; Scenario Goal Completion requires every variant of a scenario to pass. The conversation is not the grade.
+**Success:** Hidden state-based unit tests (about 6 on Test-N, 8 on Test-C) inspect the database diff: required changes must be present, and unexpected collateral writes fail. Task Goal Completion is the share of tasks that pass every test; Scenario Goal Completion requires every variant of a scenario to pass. The conversation is not the grade.
 **Size / pin:** 750 tasks (250 scenarios × 3): Train 105, Dev 60, Test-N 168, Test-C 417. Test-C (unseen Amazon or Gmail APIs) is the authors’ main target. Pin the named split.
 **Level:** L5 / R4. Many cross-app APIs and interactive code, not a visible chat score.
-**Sketch (not a real item):** From notes and roommate messages, place a grocery order; tests check the order table, not the chat.
+**Sketch (not a real item):** Pay a roommate Venmo request after confirming the amount in email; tests check the ledger, not the chat.
 **Do not mix:** Hidden database tests, not the visible conversation.
 
 ### MCP-Universe
@@ -474,6 +474,6 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Success:** Fine-grained partial reward against task-specific checkpoints on the final environment state (about 27 per task), plus a strict binary completion bit. Most credit is from files and application state; model judges cover at most half of any task (11.53% of total score).
 **Size / pin:** 108 workflows. Median human operation time about 1.6 hours (about 48× OSWorld v1’s two-minute median). Pin OSWorld 2.0, not v1.
 **Level:** L6 / R4. Hour-scale workflows that can change mid-run, not v1’s shorter desktop tasks.
-**Sketch (not a real item):** File an expense claim from receipts, mail, and a bank portal; a new email mid-run changes the amount; submit the corrected packet.
+**Sketch (not a real item):** Register for a conference from a PDF call, an email thread, and a self-hosted portal; a new message mid-run changes the paper title; submit the corrected packet.
 **Do not mix:** Not OSWorld v1 (369 shorter desktop tasks).
 
