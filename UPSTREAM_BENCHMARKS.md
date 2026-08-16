@@ -207,9 +207,9 @@ Cards follow. Each was checked against the official page on the fetch date. Sket
 **Source:** https://arxiv.org/html/2407.13168 (fetched 2026-08-16).
 
 **Given:** A scientist-written research coding problem with docstring inputs and outputs. Each of 80 main problems splits into subproblems (338 total) across 16 natural-science subfields. Optional scientist-written background. The model implements Python functions and composes them.
-**Success:** Automatic tests: numerical input–output checks plus domain-specific cases that reproduce a published result or an analytical solution. A main problem counts only if every subproblem and the integrated solution pass. Reported metric is pass@1 (one sample succeeds). That is not pass^k (all k runs succeed). Draft said numeric tests; the paper also uses those domain-specific cases.
+**Success:** Automatic tests: numerical input–output checks plus domain-specific cases that reproduce a published result or an analytical solution. A main problem counts only if every subproblem and the integrated solution pass. Reported metric is pass@1 (one sample succeeds). That is not pass^k (all k runs succeed). The headline is main-problem pass@1 under the paper’s standard setup: no scientist-written background, and later subproblems see the model’s generated code, not gold. Draft said numeric tests; the paper also uses those domain-specific cases.
 **Size / pin:** 80 main problems, 338 subproblems. Development 15 mains / 50 subproblems; test 65 mains / 288 subproblems.
 **Level:** L1 / R5. Deterministic function tests at research-level science, not repository repair.
 **Sketch (not a real item):** Implement a stable numerical solver whose hidden tests check residuals against tight tolerances the prompt does not state.
-**Do not mix:** Functions and numeric/domain tests, not SWE-bench repo repair.
+**Do not mix:** Functions and numeric/domain tests, not SWE-bench repo repair. Not with-background pass@1 and not the subproblem rate.
 
