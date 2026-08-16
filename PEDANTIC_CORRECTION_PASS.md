@@ -1,6 +1,6 @@
 # Pedantic Correction Pass — Harness / RSI Audit
 
-**Rubrics:** v1 letters in this file are historical. Scoring rules are now in [`RUBRICS.md`](RUBRICS.md) (v2: claim-level, Disc-U/Disc-H split, exposure L1–L4 + L2s, hard caps).
+**Rubrics:** v1 letters in this file are historical. Scoring rules, the grade board, and calibration are in [`RUBRICS.md`](RUBRICS.md). Paper evidence (preprint + official code) is in [`papers/`](papers/).
 
 **Date:** 2026-08-16  
 **Method:** Primary-source verification against arXiv/ACL HTML for all 16 papers in the user’s audit.  
@@ -63,7 +63,7 @@
 | Gödel Agent | C− | C− | 1 | Main: 4o improver / 3.5 executor asymmetry |
 | Self-Developing | B− | C+ | 0 | |
 | MaAS | B− | C | 0 | |
-| GEPA | B+ main | C+ | 0 | Peripheral KernelBench/adversarial weaker |
+| GEPA | B+ main | C+ | 0 | Peripheral KernelBench weaker (same 35 kernels) |
 | ACE | B+ offline / C online | C | 0 | Discovery lean C |
 | MASS | B | C | 0 | ± = 3 inference runs, not search |
 | ShinkaEvolve | B+ hetero | B MoE / C harness | 0 | |
@@ -74,7 +74,7 @@
 
 ## 2) Reproducible protocols (run-level detail)
 
-Below: enough to reconstruct the *experimental design*, not every hyperparameter file. Citations are arXiv IDs.
+Below: enough to reconstruct the *experimental design*, not every hyperparameter file. Citations are arXiv IDs. After the 16 August 2026 code pass, prefer [`papers/`](papers/) if a bullet here disagrees.
 
 ### 2.1 PromptBreeder (2309.16797)
 - **Pop:** 50; **gens:** ~20–40 (1–2k fitness evals); fitness = accuracy on **random batch of 100 train** examples.
@@ -84,10 +84,14 @@ Below: enough to reconstruct the *experimental design*, not every hyperparameter
 - **Final:** Fittest over whole run → once on test. **Outer seeds: missing.**
 
 ### 2.2 GEPA (2507.19457)
-- **Splits (App. E.1):** Hotpot/HoVer 150/300/300; IFBench 150/300/294; AIME train/val from 2022–24 (90) equal split, test AIME-2025 ×5; LiveBench-Math n=368 seed 0 thirds.
+
+Current protocol is in [`papers/gepa.md`](papers/gepa.md) (code-checked 16 August 2026).
+
+- **Splits:** HotpotQA and HoVer 150/300/300; IFBench 150/300/294 (unseen constraint types in test); PUPA similarly split. **No AIME or LiveBench-Math in this preprint.**
 - **Alg:** minibatch b=3; \(D_{pareto}\) = validation; accept on minibatch then score on full val; final = best avg on \(D_{pareto}\).
-- **Budget:** ≈ MIPROv2 ±10%; IFBench can stop early at 678.
-- **Models:** Qwen3-8B or GPT-4.1 Mini; reflection LM separately.
+- **Budget:** capped to MIPROv2 `auto=heavy` (discrepancy ≤10.15%); IFBench “optimal test” can stop at 678 vs GRPO 24,000.
+- **Models:** Qwen3-8B or GPT-4.1 Mini; separate reflection LM.
+- **Table 1:** Qwen 48.85 → 61.28; GPT-4.1 Mini GEPA 66.97. KernelBench: same 35 kernels in train and Pareto (Eval D).
 - **Outer seeds: missing.**
 
 ### 2.3 ACE (2510.04618)

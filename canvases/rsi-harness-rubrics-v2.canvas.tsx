@@ -119,7 +119,7 @@ export default function RubricsV2Canvas() {
             [
               "Validation is queried many times; test is hidden; search is not repeated",
               <Pill key="bp" tone="info" size="small">B+</Pill>,
-              "GEPA main; MASS. DiscoPOP then drops to B because the named loss is not the table winner",
+              "GEPA main; ACE offline. DiscoPOP then drops to B because the named loss is not the table winner",
             ],
             [
               "Hand-built system reported as if search found it",

@@ -230,6 +230,10 @@ export default function RSIHarnessAuditCanvas() {
           Primary-source verification of 16 top-conference papers. Core thesis
           holds. Four grade deltas; two high-stakes claims confirmed verbatim.
         </Text>
+        <Callout tone="warning" title="Superseded as the grade board">
+          This canvas is the v1 one-letter-per-PDF pass. Current experiment
+          grades are in rsi-harness-grades-round2 and RUBRICS.md.
+        </Callout>
       </Stack>
 
       <Grid columns={4} gap={12}>

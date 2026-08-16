@@ -18,7 +18,7 @@ export default function CohortCalibrationCanvas() {
         <H1>Cohort calibration</H1>
         <Text tone="secondary" size="small">
           Same letter means the same ceiling and the same kind of miss, not the
-          same sin. Paper-by-paper evidence is in REPORT.md.
+          same sin. Paper-by-paper evidence is in papers/.
         </Text>
       </Stack>
 
@@ -160,7 +160,7 @@ export default function CohortCalibrationCanvas() {
 
       <Text tone="secondary" size="small">
         Full paper-by-paper evidence, quotes, and “why not higher / why not
-        lower” is in REPORT.md.
+        lower” is in papers/.
       </Text>
     </Stack>
   );

@@ -42,13 +42,13 @@ const CLAIMS: Claim[] = [
   },
   {
     family: "prompt",
-    experiment: "GEPA main, six tasks",
+    experiment: "GEPA main, four tasks (HotpotQA / IFBench / HoVer / PUPA)",
     see: "2",
     eval: "B+",
     search: "B",
     object: "C+",
     rsi: "0",
-    why: "Train/val/test exist. Validation scored every round. Prompt-optimizer budgets matched. Prompts are task recipes with cross-model copy.",
+    why: "Train/val/test exist. Val is Pareto selection. MIPROv2 budgets matched. Qwen 48.85 → 61.28. AIME rows are not in this preprint.",
   },
   {
     family: "prompt",
@@ -59,16 +59,6 @@ const CLAIMS: Claim[] = [
     object: "C",
     rsi: "0",
     why: "Search and report use the same 35 kernels.",
-  },
-  {
-    family: "prompt",
-    experiment: "GEPA adversarial prepend on AIME 2025",
-    see: "2",
-    eval: "C",
-    search: "B",
-    object: "C",
-    rsi: "0",
-    why: "Attack searched on 2022–24, scored on 2025. Red-team demo, not a general optimizer result.",
   },
   {
     family: "prompt",
@@ -182,6 +172,16 @@ const CLAIMS: Claim[] = [
   },
   {
     family: "self",
+    experiment: "STOP transfer of one LPN improver to five toys",
+    see: "1 relative",
+    eval: "B−",
+    search: "B−",
+    object: "C",
+    rsi: "1",
+    why: "One improver after T=4, not the five-run protocol. Same textbook children.",
+  },
+  {
+    family: "self",
     experiment: "Gödel Agent val→test, 4o writes / 3.5 runs",
     see: "2",
     eval: "C−",
@@ -288,7 +288,7 @@ const CLAIMS: Claim[] = [
     search: "C+",
     object: "C",
     rsi: "0",
-    why: "Search objective is the score, but packing is checkable. Three runs. Standard annealing + SLSQP mix.",
+    why: "Search objective is the score, but packing is checkable. Ablations live here, not three headline searches. Standard annealing + SLSQP mix.",
   },
   {
     family: "object",
@@ -355,7 +355,7 @@ export default function GradesRound2Canvas() {
           One experiment per row. Search method and evolved object are separate
           scores. See = what the proposer was allowed to see (1 frozen test, 2
           validation reused, 2r split then rewritten, 3 same tasks, 4 hidden
-          tests in the proposal prompt). Full writeup: GRADES_ROUND2.md.
+          tests in the proposal prompt). Full writeup: RUBRICS.md.
         </Text>
       </Stack>
 
