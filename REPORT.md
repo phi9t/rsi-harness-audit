@@ -1,6 +1,6 @@
 # Corpus audit (captured 16 August 2026)
 
-This file is a captured long-form audit of the 16-paper cohort. It is **not** a re-grade. The body below is stored as received, including display-math artifacts. A historical primary-source check of this same writeup is [`PEDANTIC_CORRECTION_PASS.md`](PEDANTIC_CORRECTION_PASS.md).
+This file is a captured long-form audit of the 16-paper cohort. It was **evidence** for the 17 August 2026 grading round. Official letters live on [`GRADE_BOARD.md`](GRADE_BOARD.md). The body below is stored as received, including display-math artifacts. A historical primary-source check of this same writeup is [`PEDANTIC_CORRECTION_PASS.md`](PEDANTIC_CORRECTION_PASS.md).
 
 | Live object | File |
 |---|---|
@@ -10,7 +10,7 @@ This file is a captured long-form audit of the 16-paper cohort. It is **not** a 
 | Build ranking (not letters) | [`METHODS.md`](METHODS.md) |
 | v1 check of this capture | [`PEDANTIC_CORRECTION_PASS.md`](PEDANTIC_CORRECTION_PASS.md) |
 
-This writeup uses a two-axis table (evaluation protocol + artifact/discovery) plus an RSI level. Official letters are the four-axis board (Eval, Search, Object, RSI). Cite the board's **Best Eval** column, not §2.0 here. Where a letter differs, the board wins until a later grading round is requested.
+This writeup uses a two-axis table (evaluation protocol + artifact/discovery) plus an RSI level. Official letters are the four-axis board (Eval, Search, Object, RSI). Cite the board's **Best Eval** column, not §2.0 here. Where a letter differs, the board wins.
 
 | Paper | Letter in §2.0 | Board (cite this) |
 |---|---|---|
@@ -19,8 +19,8 @@ This writeup uses a two-axis table (evaluation protocol + artifact/discovery) pl
 | ADAS Eval | C+ | B− |
 | Gödel Agent Eval | B− | C− |
 | MaAS Eval | C− | B− |
-| GEPA main Eval | B | B+; KernelBench remains D |
-| ACE offline Eval | B | B+; online stays mixed |
+| GEPA main Eval | B | B−; KernelBench remains D |
+| ACE offline Eval | B | B−; online stays mixed |
 | ShinkaEvolve Eval | B−, heterogeneous | B (MoE, ALE) |
 | DGM Eval | D | C (Polyglot extra / transfer); headline D is SWE 20→50 |
 | STOP object | C+ | C |

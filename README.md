@@ -18,4 +18,4 @@ Scoring and evidence for 16 top-conference papers on prompt evolution, workflow 
 
 Interactive boards live in the Cursor canvas folder for this workspace (`rsi-harness-grades-round2`, `rsi-harness-calibration`, `rsi-harness-rubrics-v2`).
 
-Letters did not move after the 16 August 2026 preprint+code pass. Facts that did (GEPA task count and Table 1, Shinka AIME grouping, Self-Developing Figure 11, DGM `big.json` not in the outer loop) are in [`GRADE_BOARD.md`](GRADE_BOARD.md).
+The 17 August 2026 round moved two Eval letters: GEPA main and ACE offline, both B+ → B− (test monitoring). Other letters held. Cite [`GRADE_BOARD.md`](GRADE_BOARD.md).

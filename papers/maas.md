@@ -47,6 +47,22 @@ Frozen controller architecture and operator set. Paths are sampled, not a new se
 
 Code vs paper: the repo is a MetaGPT fork; the supernet loop lives under `maas/ext/maas/`. Train/test directories are separate. MATH 617 slice is in the paper, not re-derived in the controller.
 
+## Reconstructable protocol
+
+`MultiLayerController` maps query embedding × operator embeddings to per-layer samples. Execute the sampled path on a train batch; Adam on controller parameters. Save `{dataset}_controller_sample{k}.pth` from train; `Optimizer.test()` loads that checkpoint on `{root}/test`.
+
+## Train/test audit
+
+Train:test 1:4. No separate val. MATH 119/486 from the 617 level-5 four-category slice. HumanEval 131 test items (one problem ≈ 0.76 points). Ablations appear on the reported test (monitoring). Still B−, not C−: a 4/5 test split is real.
+
+## Artifact audit
+
+Taxonomy 2: CoT, debate, self-consistency, self-refine, ensemble, testing, ReAct, early exit (`Generate`, `GenerateCoT`, `ScEnsemble`, `Programmer`, `SelfRefine`, `EarlyStop`). Router vs AFlow is Search B−.
+
+## Precise verdict
+
+Supported: query-conditioned routing can match AFlow at lower reported cost on this slice. Not established: new agent primitives, full MATH, or search-level confidence intervals.
+
 ## Cite as / do not cite as
 
 **Cite as.** Routing and cost paper. Search-method comparison vs AFlow.

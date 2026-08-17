@@ -87,6 +87,22 @@ Adapted from DGM. Differences that matter:
 
 Shipped `best_agent/` is a GPT-5 self-modify trace (`self_evo.md`) with bash, file editor, ast editor, python executor. It is not the Appendix F no-op resolver.
 
+## Reconstructable protocol
+
+Tree of `Node`s. Decoupled expand vs evaluate (`alpha` default 0.6). Expand: Thompson-sample a parent from clade evals, diagnose, child implements. Evaluate: Thompson-sample a node from its own evals, run one unseen task, append 0/1. Final pick is best-belief on the finished tree.
+
+## Train/test audit
+
+Verified-60 is DGM’s small+medium slice (See 2-rewrite). 8,000-on-500 is See 3 (D). Lite-207 drops 93 overlapping Lite tasks (C+). Diagnoser still gets DGM’s private-test template. Granularity: 56.7 vs 53.3 is two of 60 tasks; Lite 40.1 vs 39.6 is about one of 207.
+
+## Artifact audit
+
+Typical harness C (bash, edits, retries). Showcased `attempt_error_resolution` logs “Would attempt to install…”, skips, `return True` (taxonomy fail → object D). Not in shipped `best_agent/`. CMP is a search heuristic over Q, not RSI 2.
+
+## Precise verdict
+
+Supported: lineage-aware parent pick vs greedy score on the same 60-slice; honest Lite overlap cut. Not established: 61.4% on 500 as held-out ability, a working error-resolution tool, or child-quality RSI.
+
 ## Cite as / do not cite as
 
 **Cite as.** Best search-method paper in this cohort for “do not pick parents by current score alone.” Lite-207 is the honest leftover cut.

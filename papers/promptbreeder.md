@@ -50,6 +50,22 @@ No official code. Grade from the preprint only. Hugging Face’s GitHub link is 
 
 Paper loop: initialize a population of units (typically two task-prompts plus a mutation-prompt, from thinking-styles × mutation-prompts × problem description). Binary tournament: sample two units, mutate the winner, overwrite the loser. Fitness = accuracy on a random train batch of 100. One of nine operators is applied per replication (direct mutation, EDA over the population, hyper-mutation of mutation-prompts, Lamarckian reverse-engineering from a correct working-out, crossover / context shuffle). After fitness plateaus, score the run-best individual once on test. Model: PaLM 2-L. Inducer/evaluator temperature 0.0; redescriber temperature starts in 1.0–2.0 and can evolve.
 
+## Reconstructable protocol
+
+Population ~50 task prompts with mutation prompts. ~20–30 generations, ~1,000–2,000 fitness evals on random 100-example train batches. Stop when training “appears” to plateau. Evaluate the run-best on leftover or official test.
+
+## Train/test audit
+
+Arithmetic tasks randomly halved. No evidence the algorithm sees test labels. One outer search. Stopping is qualitative. Uncertainty is over answers, not searches.
+
+## Artifact audit
+
+Taxonomy 1: odd strings such as `SOLUTION"` and “You know what’s cool? A million dollars.” Mutation prompts ask to simplify, clarify, or combine. Model-specific control surfaces, not a general theory of prompt design.
+
+## Precise verdict
+
+Supported: evolutionary prompt search can beat some human/automated baselines on held-out examples. Not established: mutation prompts become better general prompt improvers. RSI 1, weak.
+
 ## Cite as / do not cite as
 
 **Cite as.** Early prompt evolution with a leftover test. Mutation-prompt coevolution is why RSI is 1 rather than 0.

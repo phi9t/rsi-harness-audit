@@ -59,6 +59,22 @@ Grade the paper experiment from the preprint plus `results/{drop,mgsm,gpqa,mmlu}
 
 Code vs paper: current `src/agent_module.py` defaults the writer to `o3-2025-04-16` and some task files default solvers to `gpt-4.1-mini` / `gpt-4o-mini`. That is post-paper drift. Do not grade HEAD as the ACL experiment.
 
+## Reconstructable protocol
+
+One agent. Writer (`gpt-4o` in `results/`) emits required tool calls; `action_adjust_logic` monkey-patches `solver`. Up to six cycles × ≤30 iterations on validation. If val ≥ threshold, `evaluate()` also scores leftover test and returns both numbers. Restricted runs forbid `"gpt-4o"` in solver code.
+
+## Train/test audit
+
+Val then leftover test (GPQA 32/166). See 2. Test accuracy can enter the evolve string (test-score peek). Main table mixes GPT-4o writer with GPT-3.5 solver (gain split: model substitution). Do not copy REPORT §2.0 B−; C− is the calibrated letter.
+
+## Artifact audit
+
+Taxonomy 2: majority vote, roles, few-shot. Seed text already names debate and dynamic roles. Game of 24 listing recurses `{+,-,*,/}` until `abs(nums[0]-24)<1e-6` (taxonomy 3). Unrestricted free setting learns to call GPT-4o; drop from same-model tables.
+
+## Precise verdict
+
+Supported: self-edits exist; MGSM 100-run fragility is real. Not established: same-model harness gains, a new algorithm, or child-quality RSI.
+
 ## Cite as / do not cite as
 
 **Cite as.** Stronger self-reference than ADAS, weaker causal evidence. 100-run MGSM fragility.

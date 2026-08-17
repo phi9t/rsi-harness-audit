@@ -47,6 +47,22 @@ Frozen outer searcher. Modules change. The searcher does not.
 
 Code vs paper: TravelPlanner scripts expose Hugging Face `train`/`validation`/`test` loaders, but the architecture search loop does not freeze a leftover split for module selection. Grade D from the missing firewall, not from those loaders.
 
+## Reconstructable protocol
+
+Four module types (planning, reasoning, tool, memory) from ~16 systems, ~1,050 combinations. Evolution, LLM variants, score-fed predictor. Stop after several non-improving iterations (~8–18).
+
+## Train/test audit
+
+No documented search / selection / frozen-final split. Predictor trains on past scores. Same env metric as Table 1. Eval D.
+
+## Artifact audit
+
+Taxonomy 2 with template leakage: SF-ToT is self-consistency plus refine; ScienceWorld prompts live in `alfworld_prompt_*.py`. Object C−.
+
+## Precise verdict
+
+Supported: a modular search space. Not established: a documented firewall or a causally isolated new module. RSI 0.
+
 ## Cite as / do not cite as
 
 **Cite as.** The predictor is the contribution.

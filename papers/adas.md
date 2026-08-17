@@ -47,6 +47,22 @@ Fixed meta-agent. Archive grows; the writer does not.
 
 Code vs paper: `data_select.py` samples up to 100 ≤5×5 tasks then cuts 20 val / rest test; the paper’s scored ARC slice is the Easy ≤5×5 20/60 protocol. Do not cite ARC numbers without that filter.
 
+## Reconstructable protocol
+
+Meta-agent writes Python `forward` given a benchmark description, archive, and error feedback. ~25–30 iterations. Valid children enter the archive. After search, evaluate walks the archive on test.
+
+## Train/test audit
+
+Val for search, test for report (See 2). Every discovered agent is scored on test (monitoring, not See 3). ARC Easy ≤5×5, 20/60. One trajectory per domain. GPQA 32/166: one item ≈ 0.60 points.
+
+## Artifact audit
+
+Taxonomy 2: Structured Feedback, Multi-Step Peer Review, Divide and Conquer are generate / critique / vote / decompose. Seed archive already lists those families. Call count vs CoT is a gain-split miss.
+
+## Precise verdict
+
+Supported: agent programs are a viable search space. Not established: a new harness principle or compute-matched ensemble gains. RSI 0.
+
 ## Cite as / do not cite as
 
 **Cite as.** The right conceptual starting paper for “agent programs are the search object.”

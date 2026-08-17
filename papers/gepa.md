@@ -9,7 +9,7 @@
 
 | Experiment | See | Eval | Search method | Evolved object | RSI | Binding reason |
 |---|---|---|---|---|---|---|
-| Main four tasks, Qwen3-8B / GPT-4.1 Mini | 2 | **B+** | **B** | **C+** | 0 | Train/val/test exist (HoVer 150/300/300). Val is \(D_{pareto}\), scored every round for parent pick and the reported winner. Prompt-optimizer budget matched to MIPROv2 within 10.15%. Search not repeated. Prompts are task recipes, not a new primitive. |
+| Main four tasks, Qwen3-8B / GPT-4.1 Mini | 2 | **B−** | **B** | **C+** | 0 | Train/val/test exist (HoVer 150/300/300). Val is \(D_{pareto}\), scored every round. “Optimal test” envelopes fail test monitoring, so matched MIPROv2 rollouts cannot supply plus. Search not repeated. Prompts are task recipes (taxonomy 4). |
 | Inference-time search: KernelBench 35 kernels (+ NPUEval) | 3 | **D** | **B** | **C** | 0 | Paper puts the same task list in both \(D_{train}\) and \(D_{pareto}\) so GEPA can “overfit” that set. Search and headline share the 35 KernelBench kernels. |
 
 Letters match the [`GRADE_BOARD.md`](../GRADE_BOARD.md) grade board. The preprint does **not** contain AIME / LiveBench-Math splits or an adversarial AIME prepend; those rows are not graded.
@@ -40,9 +40,9 @@ MIPROv2 `auto=heavy` (18 instructions × 18 few-shot sets) spent 2,270–6,926 r
 
 ## Eval / search method / evolved object / RSI
 
-**Eval B+ (main).** Level 2: test is held out; validation is not. Paper §4: train is fully readable; val scores may be monitored but val *text* is restricted; test is unused until after optimization. In the algorithm, train = \(D_{feedback}\) (minibatch traces, size 3) and val = \(D_{pareto}\) (acceptance after a minibatch win, parent sampling, and the returned program). That blocks A. Plus: documented three-way splits, including IFBench constraint-type holdout (IF-RLVR Train → train/val; IFBench test, 150/300/294), and prompt-optimizer budgets kept near each other. Minus that would be required for B is not triggered: the extra A-axis is the matched MIPROv2/GRPO comparison. Missing: independent full GEPA searches; no ± over search.
+**Eval B− (main).** Level 2: test is held out; validation is not. Paper §4: train is fully readable; val scores may be monitored but val *text* is restricted; the algorithm does not score test for parent pick. Table 1 winner is val. Test-vs-budget figures and “optimal test” rollout counts (6,438 / 678 / 6,858 / 2,157) fail test monitoring: plus cannot be claimed from that envelope, and with no search repeats that is two hygiene misses → B−. MIPROv2 budgets still keep Search at B. Missing: independent full GEPA searches; no ± over search.
 
-**Eval D (KernelBench / NPUEval).** Level 3. §6: pass the tasks to be solved as the training set, “ensuring that both \(D_{train}\) and \(D_{pareto}\) contain the full set of tasks” so GEPA can “overfit” them. KernelBench: 35 tasks from the representative subset, Sequential5 agent, GPT-4o, \(fast_1\) from ~0% to >20%. Same PDF, different experiment. Do not fold into the B+.
+**Eval D (KernelBench / NPUEval).** Level 3. §6: pass the tasks to be solved as the training set, “ensuring that both \(D_{train}\) and \(D_{pareto}\) contain the full set of tasks” so GEPA can “overfit” them. KernelBench: 35 tasks from the representative subset, Sequential5 agent, GPT-4o, \(fast_1\) from ~0% to >20%. Same PDF, different experiment. Do not fold into the main B−.
 
 **Search method B.** Specified loop: Pareto parent sampling, round-robin module pick, reflective mutation, optional system-aware merge. Compared to other *searchers* (MIPROv2, GRPO) under a shared rollout cap, plus an ablation vs SelectBestCandidate (+6.4 aggregate on Qwen). That is the cohort’s cleanest prompt-searcher comparison. Not B+: one search per cell; merge hyperparameters were not retuned for Qwen.
 
@@ -64,7 +64,7 @@ How the published optimizer runs, in code order, is in [`gepa-loop.md`](gepa-loo
 
 Code vs paper (does not move letters): the public repo has grown extra engines (optimize-anything, AIME tutorial). Paper experiments remain the four-task + KernelBench/NPUEval protocols above. Merge acceptance is ≥ on the subsample (code) vs the paper’s “improved on the minibatch” language.
 
-Quote that locks Eval B+ rather than A:
+Quote that locks Eval B− rather than A or B+:
 
 > “the majority of GEPA’s counted rollouts are allocated to the validation set, where scores are utilized solely for candidate selection and not for producing learning signals.”
 
@@ -72,8 +72,24 @@ Quote that locks KernelBench D:
 
 > “ensuring that both \(D_{train}\) and \(D_{pareto}\) contain the full set of tasks. This way, GEPA can ‘overfit’ the set of tasks”
 
+## Reconstructable protocol
+
+Population of module instructions. Each round: Pareto parent sample from val instance-wise undominated set; round-robin module; minibatch traces on train (\(D_{feedback}\), size 3); reflection LM rewrites one instruction; StrictImprovementAcceptance on the minibatch then full val; optional ancestor merge. Returned program: highest mean val. KernelBench/NPUEval put the same tasks in \(D_{train}\) and \(D_{pareto}\).
+
+## Train/test audit
+
+Main four tasks: documented train / val / test (HoVer 150/300/300; IFBench 150/300/294). Selection is val. Test-vs-budget and “optimal test” envelopes are researcher-level test monitoring. KernelBench 35: See 3.
+
+## Artifact audit
+
+Taxonomy 4: hop-2 retrieval rules (do not paraphrase hop 1; target the missing entity; avoid duplicate queries). Portable relative to CoT. Not a new operator. Merge can hurt (Qwen IFBench 28.23).
+
+## Precise verdict
+
+Supported: trace-driven prompt evolution with a real test split, vs MIPROv2/GRPO under a shared rollout cap. Not established: untouched confirmatory test, 35× as a typical ratio, KernelBench transfer, RSI.
+
 ## Cite as / do not cite as
 
-**Cite as.** Best practical prompt-optimizer protocol in this cohort: real test split, honest adaptive-val, MIPROv2/GRPO under a shared rollout cap. Human-designed searcher (reflection + Pareto).
+**Cite as.** Best practical prompt-optimizer protocol in this cohort that still has a real test split: honest adaptive-val, MIPROv2/GRPO under a shared rollout cap. Eval B− because of test-oracle envelopes. Human-designed searcher (reflection + Pareto).
 
 **Do not cite as.** Typical 35× savings (that is IFBench 678 vs 24,000). KernelBench/NPUEval as held-out kernel generalization. Merge as uniformly helpful (Qwen IFBench 28.23). RSI. AIME or LiveBench results from this PDF. Trace/TextGrad as Table 1 controls.

@@ -56,6 +56,22 @@ Frozen GPT-4 proposer. The discoverer’s weights are not the thing being aligne
 
 Code vs paper: trainer’s current LRML matches Table 1 / Eq. 5 (with `tau = 0.05`). An `_old` method used `sigmoid(logits)` without τ. Grade the current function.
 
+## Reconstructable protocol
+
+GPT-4 emits JSON `{thought, name, code}` for a PyTorch `f` over chosen/rejected log-probs. Seed archive is DPO, hinge, IPO, KTO with MT-Bench scores. Validate, train GPO, score FastChat MT-Bench, append fitness, ask for the next loss. About 100 valid functions. Frozen training recipe (`zephyr-7b-gemma-sft`, Argilla DPO Mix 7K, β=0.05).
+
+## Train/test audit
+
+Fitness is MT-Bench (80 questions). Held-out family is AlpacaEval 2.0, TL;DR, IMDb. See 2, not See 3. One discovery pipeline. CIFAR-10 toy averages three runs; IMDb curves average generation seeds, not searches.
+
+## Artifact audit
+
+Taxonomy 5: a closed-form mix of DPO and exponential preference losses. Use Eq. 5 / Table 1 / `gpo.py`, not Eq. 4. LRML is 6th on MT-Bench (7.916 vs DBAQL 7.978) and not the AlpacaEval WR winner (PADLL 14.07). Winner’s curse plus branded favorite keep the object at B−.
+
+## Precise verdict
+
+Supported: LLM search can write a working preference objective that transfers to a different benchmark family. Not established: that the branded LRML is best, SOTA, or a repeated discovery.
+
 ## Cite as / do not cite as
 
 **Cite as.** Machine-written preference objective with a real held-out family. If you reproduce LRML, run PADLL and AQFL in the same grid.

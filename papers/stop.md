@@ -62,6 +62,22 @@ And: “not completely a Recursively Self-Improving (RSI) system, as the underly
 
 Code vs paper: grey-box / 20–50 split / sample-and-pick-best seed match §3–5.1. Config `n_iterations = 6` vs figures that highlight rounds 1–3 and a T=4 transfer pick. Sandbox stress test is a separate `tasks/sandbox/` utility with `use_sandbox=True`; the LPN secret scorer does not implement that flag.
 
+## Reconstructable protocol
+
+Start with an improver program. Pass the improver’s source into itself. LPN: 20 train, 50 held-out, up to four recursive rounds, five complete STOP runs. Transfer: one selected fourth-round improver on other toys.
+
+## Train/test audit
+
+Main row See 1 with search repeats. Transfer is one lineage (B−). Timeout descriptions differ between prose and code; pin the commit.
+
+## Artifact audit
+
+Taxonomy 3: beam search, genetic algorithms, annealing, top-k, ε-greedy, caching. Reward hacks (unsandbox, NumPy broadcast “>1000%”) search the whole path to reward.
+
+## Precise verdict
+
+Supported: GPT-4 can reconstruct known search algorithms while editing an improver on small synthetic tasks. Not established: later improvers are generally better at inventing improvement algorithms. RSI 1.
+
 ## Cite as / do not cite as
 
 **Cite as.** Cleanest bounded self-reference experiment in the cohort, and the best reward-hacking case study (unsandbox, >1000% NumPy).

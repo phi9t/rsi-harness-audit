@@ -84,6 +84,22 @@ Official repo is the general engine plus a circle-packing example. AIME / ALE / 
 
 Code vs paper: packing example’s system prompt already names SLSQP and a 2.635 target — the searcher is not starting from a blank numerical-methods menu. Framework README post-dates the preprint (PyPI runner, skills); that does not change the four paper experiments.
 
+## Reconstructable protocol
+
+Island archive; weighted parent sample; LLM ensemble emits a diff or rewrite inside `EVOLVE-BLOCK-*`. Packing ~150 evals. AIME 2024: all 30 questions, 75 generations, three inner evals. ALE: public score 50 generations, then private. MoE: 30 iterations at 556M, then a 2.7B check with frozen 64 experts / top-8.
+
+## Train/test audit
+
+Packing is See 3-exact (checkable; slack ~1e−8). AIME 2024 is See 3 (D); 2023/2025 year holdout is B. ALE public/private is B. MoE fitness is last-10M CE plus load imbalance; downstream is a later check, one transfer run.
+
+## Artifact audit
+
+Packing / AIME / ALE: taxonomy 3 or 2 (SLSQP+annealing; 7-call ensemble; init-hugging AtCoder edits). MoE: taxonomy 5, object B. Paper \(\tau=0.064/N_E\) vs published code \(0.64/N_E\) (tenfold). Mean 0.362 → 0.368 at λ=0.01; HellaSwag and PIQA drop. No hinge/entropy ablation.
+
+## Precise verdict
+
+Supported: a new load-balancing term with a scale-up; public/private ALE; year-held-out AIME as a transfer check. Not established: AIME-2024 in-sample as generalization, parent-sampling proven on MoE, or extra pretraining seeds.
+
 ## Cite as / do not cite as
 
 **Cite as.** Strongest evolved *object* in the cohort (MoE), with the 64/8 freeze and missing seeds named. Strongest *search-method ablations* in the cohort (packing only).

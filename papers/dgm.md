@@ -88,6 +88,22 @@ The child agent’s code is what later parents edit (`coding_agent.py` + `tools/
 
 Polyglot implementer in `coding_agent_polyglot.py` can switch to `OPENAI_MODEL` when `--self_improve`; SWE `coding_agent.py` stays on `CLAUDE_MODEL` for both self-modify and eval. Paper Table 3: self-modification Claude 3.5 Sonnet (New) on both benches; evaluation Claude 3.5 on SWE, o3-mini on Polyglot.
 
+## Reconstructable protocol
+
+Archive of compiled children. Parent pick `score_child_prop`. o1 diagnoses a failure with `get_diagnose_prompt_swe` or `_polyglot`. Claude implements the spec in Docker. SWE stages 10 then maybe +50; Polyglot 10 then maybe +50, pass@1. Keep if the child compiles.
+
+## Train/test audit
+
+SWE 20→50 is See 4: the diagnosis prompt pastes official `test_patch` and the private-test log. Polyglot extra eval is 2-rewrite (10/50 then full set). SWE→Polyglot transfer is a real other benchmark of a See-4 object. One archive run.
+
+## Artifact audit
+
+Taxonomy 2 from a weak root: base tools are bash plus whole-file overwrite. Descendants add range view, string replace, retries, a ranker. C−, not D: the tools run. `self_improve()` loads `big.json` but never uses it.
+
+## Precise verdict
+
+Supported: an archive can rebuild a normal coding harness from a stripped shell. Not established: held-out SWE 20→50, novel tools, or measured improvement-of-improvement.
+
 ## Cite as / do not cite as
 
 **Cite as.** Negative-control Eval case: how not to validate RSI. Useful as “automated search can rebuild a normal coding harness from a stripped shell.” Open-ended archive vs last-only is a real ablation of parent pick, not of hidden tests.

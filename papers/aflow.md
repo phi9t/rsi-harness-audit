@@ -49,6 +49,22 @@ Frozen MCTS + LLM expander. Workflows change. The searcher does not.
 
 Code vs paper: the high-variance filter is in the paper’s Initialization, not auto-run in current `evaluator.py` (`va_list = None` tests all val). README still says you may set `va_list` to use a portion of val. Grade the published experiment as 2-rewrite. Seed-42 20/80 is in the code.
 
+## Reconstructable protocol
+
+Seed-42 20/80 split. Blank workflow five times on val; keep high-variance items as the search set. MCTS ~20 rounds, five val evals per candidate, select on val, three test runs of the winner.
+
+## Train/test audit
+
+See 2-rewrite caps Eval at B−. Test is 80% and unused during MCTS. Paper plots test across rounds (monitoring). One split, one search. MATH is the 617 level-5 four-category slice.
+
+## Artifact audit
+
+Taxonomy 2: generate / execute / ensemble / test / revise over a human operator list. Operator-off ablation still allows Custom code.
+
+## Precise verdict
+
+Supported: automated workflow construction with a real test split. Not established: new agent science or search-level confidence intervals. RSI 0.
+
 ## Cite as / do not cite as
 
 **Cite as.** Better split hygiene than ADAS, undone in part by the variance filter. Workflows are familiar program-aided and test-driven patterns.

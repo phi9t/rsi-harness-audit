@@ -9,10 +9,10 @@
 
 | Experiment | See | Eval | Search method | Evolved object | RSI | Binding reason |
 |---|---|---|---|---|---|---|
-| Offline AppWorld / FiNER / Formula | 1 | **B+** | **B** | **C** | 0 | Playbook written on train, frozen, original test (pass@1). Val in the published code is checkpoint selection (`best_playbook`), not the writer’s prompt. No full construction repeats. Playbook bullets include AppWorld APIs and auth facts. Updater (generator / reflector / curator + non-LLM ADD merge) is the method. |
+| Offline AppWorld / FiNER / Formula | 1 | **B−** | **B** | **C** | 0 | Playbook written on train, frozen, original test (pass@1). Appendix A.6 sweeps reflection rounds on AppWorld test-normal and length/dedup on FiNER test. No full construction repeats. Playbook bullets include AppWorld APIs. Updater is the method. |
 | Online, shuffled test stream | — | **C** | **B** | **C** | 0 | Paper: predict on a test item, then update from that outcome. Code: test a window with the current playbook, then train on that same window. Real streaming protocol. Not frozen held-out accuracy. Same Table 1 “test” columns as offline. |
 
-Letters match the [`GRADE_BOARD.md`](../GRADE_BOARD.md) grade board. Do not average online into the B+.
+Letters match the [`GRADE_BOARD.md`](../GRADE_BOARD.md) grade board. Do not average online into the offline B−.
 
 ## What they claim
 
@@ -51,9 +51,7 @@ GEPA as ACE’s control: official DSPy GEPA, `auto="heavy"`. Adjacent prompt-opt
 
 ## Eval / search method / evolved object / RSI
 
-**Eval B+ (offline).** Level 1 for the test firewall: “methods are optimized on the training split and evaluated on the test split with pass@1.” Original train/val/test splits. Why B+ not A: no independent full playbook constructions. Why still B+ rather than GEPA-only: cleaner test isolation than GEPA’s adaptive \(D_{pareto}\); weaker optimizer-vs-optimizer matching. Tied with GEPA main on Eval, different strengths.
-
-Published code adds a val loop: every `eval_steps` it scores val and keeps `best_playbook` if val accuracy rises; final test uses that snapshot. That is checkpoint selection on val, not GEPA-style Pareto sampling of whom to mutate. It does not use test to write bullets. Keep level 1 / B+.
+**Eval B− (offline).** Level 1 for the *algorithm*: “methods are optimized on the training split and evaluated on the test split with pass@1.” Appendix A.6 then reports reflection-iteration counts on AppWorld test-normal (Table 19) and length/dedup on FiNER test, and treats 3–5 rounds / 50–90% / 10K–100K as reasonable defaults. That is test monitoring. With no independent full constructions, two hygiene misses → B−. Published code still checkpoints on val (`best_playbook`), not test, for the writer loop.
 
 **Eval C (online).** Paper §4.1: sequential on the shuffled test split; “for each sample, the model first predicts with the current context, then updates its context based on that sample.” Rubric: prequential-on-test sold in the same “test” columns as offline → C, not D (they name the protocol) and not B (not frozen held-out accuracy). Compare only to other streaming learners with the same feedback timing (DC is the fair row).
 
@@ -90,6 +88,22 @@ Quote that locks object C (Figure 3, troubleshooting bullet):
 Quote that locks online Eval C (paper §4.1):
 
 > “For online context adaptation, methods are evaluated sequentially on the test split: for each sample, the model first predicts with the current context, then updates its context based on that sample.”
+
+## Reconstructable protocol
+
+Offline: iterate train; Generator answers with the playbook; Reflector tags bullets and writes lessons (≤5 rounds in the paper); Curator emits ADD operations; non-LLM merge; val may pick `best_playbook`; freeze; pass@1 on original test. Online: shuffled test windows; predict, then update from those items.
+
+## Train/test audit
+
+Offline algorithm does not write bullets from test. Appendix A.6 uses test-normal / FiNER test for hyperparameter stories. Online is prequential on the reported test (Eval C). Cost table uses a lighter ACE (1 epoch, 1 reflection) than the accuracy headline.
+
+## Artifact audit
+
+Taxonomy 4 contents with instance facts: phone-contacts identity, Venmo/auth fallbacks, city paths. Object C, not C+. The updater (three roles + ADD merge) is Search B.
+
+## Precise verdict
+
+Supported: structured playbooks help on AppWorld/finance when built from train. Not established: untouched confirmatory defaults, matched cost for the highest-accuracy config, a new agent algorithm, RSI.
 
 ## Cite as / do not cite as
 

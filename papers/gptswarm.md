@@ -54,6 +54,22 @@ Frozen outer optimizer (REINFORCE / node prompt updater). Edges and prompts chan
 
 Code vs paper: the crossword JSON filename suggests a larger dump; the paper’s scored protocol is the 20-puzzle subset. GAIA code path has no `optimize` call.
 
+## Reconstructable protocol
+
+REINFORCE on edge probabilities among human-designed nodes (ToT, Reflexion, CoT, vote). MiniCrosswords: 20 puzzles, ~10 iterations. HumanEval: sequential prompt harvest. MMLU: five training seeds on dev, report a val slice. GAIA path never calls the optimizer.
+
+## Train/test audit
+
+MiniCrosswords and HumanEval are See 3. MMLU is overlapping val/dev (Eval C); +2.1±1.1 on 153 items is a handful of questions. Three MiniCrosswords repetitions are execution noise, not search variance.
+
+## Artifact audit
+
+Taxonomy 2: learned routes among supplied nodes. No new reasoning primitive.
+
+## Precise verdict
+
+Supported: edge optimization can change communication structure a few points. Not established: a generally superior crossword or HumanEval architecture. RSI 0.
+
 ## Cite as / do not cite as
 
 **Cite as.** Graph abstraction. For evidence, only the MMLU seed result is usable, and it is small.

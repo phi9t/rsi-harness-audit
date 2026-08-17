@@ -45,6 +45,22 @@ No official code. Grade from the preprint only.
 
 Paper loop (Algorithm 1): (1) MIPRO-optimize a single predictor on val, then each minimum building block conditioned on that predictor; store per-block influence. (2) Softmax those influences, rejection-sample 10 valid topologies under budget \(B\), assemble each in the fixed block order with Stage-1 prompts, score each three times on val, keep the argmax. (3) Joint MIPRO over the whole winning workflow on val. Report mean±SD of three *test* executions of that one system. Same Gemini 1.5 backbone as evaluator and optimizer in the main tables (`gemini-1.5-{pro,flash}-002`). Claude 3.5 Sonnet and Mistral Nemo are extra backbone checks, not extra searches.
 
+## Reconstructable protocol
+
+Three stages on validation: block prompts, then 10 rejection-sampled topologies, then joint workflow prompts. MIPRO (10 instruction candidates, 10 rounds, up to 3 demos). Report three test executions of the chosen system.
+
+## Train/test audit
+
+Distinct val/test subsets (MATH 60/100: one test item = 1 point). See 2. ± is answer noise, not \(\operatorname{Var}_s[Q(\operatorname{Search}(s))]\). One architecture search.
+
+## Artifact audit
+
+Taxonomy 2: {Summarize, Aggregate, Reflect, Debate, Executor} in a fixed construction order. MATH winner is aggregate-heavy (`{9,0,0}`-style), not a new operator.
+
+## Precise verdict
+
+Supported: staging helps inside a human operator list, with a real held-out test. Not established: a new agent algorithm, full MATH, or search uncertainty.
+
 ## Cite as / do not cite as
 
 **Cite as.** Stronger engineering study than ADAS. Staging helps inside a human operator list. Held-out test exists.

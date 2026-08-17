@@ -56,6 +56,22 @@ No official code. Grade from the preprint only.
 
 Paper loop: clone factory \(\pi_1^g \leftarrow M_0\). For each of three iterations: sample \(N=3000\) Python `merge_models` functions from the factory (temperature 1.2 → 0.85); drop non-executable / timeout; apply survivors to task vectors \(\tau_{C_j}=C_j-M_0\) and add the result to **original** \(M_0\); score on dev; DPO the factory on top-3% vs bottom-10% pairs (later iterations also keep the previous top-3 programs). After all iterations, take the 15 best-by-dev merges and score them once on leftover test. No GPT-4 in the proposer.
 
+## Reconstructable protocol
+
+Three iterations × 3,000 proposals. Executable merges of Abel / OpenHermes / SciPhi task vectors into MLP layers via mergekit, always added to seed openchat-3.5-1210. Top 15 by dev get one leftover-test pass.
+
+## Train/test audit
+
+Dev 100 GSM8K / 600 MATH; test remainder 1,220 / 4,400. See 2. Top-15 multiple comparison plus a small Task Arithmetic / TIES coefficient grid vs thousands of LLM programs. No full-search repeats.
+
+## Artifact audit
+
+Taxonomy 4: Figure 11 Algorithm A is identity plus a reduced mean with `keepdim=True` broadcasting, α=0.5. Unusual relative to vanilla task arithmetic. No isolation of the mean. MATH 8.5 ties Task Arithmetic.
+
+## Precise verdict
+
+Supported: leftover test exists; the merge algebra is odd enough to reproduce. Not established: a new isolated merge mechanism, a fair search-space comparison, or recursive model improvement (always merge onto \(M_0\)).
+
 ## Cite as / do not cite as
 
 **Cite as.** Proper final split, unfair baseline budget, interesting unablated merge.
