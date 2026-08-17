@@ -1,6 +1,6 @@
 # Benchmarks this cohort used
 
-Definitions, version pins, and the L/R ladder for 47 upstream suites are in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md).
+Definitions, version pins, and the L/R ladder for 47 upstream suites are in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md). Official card bodies live under [`benchmarks/`](benchmarks/).
 
 SOTA here means the **upstream** suite, not the best number inside these 16 papers. Snapshot date: **16 August 2026**.
 
@@ -8,7 +8,7 @@ When a paper reports a slice (MATH 617 level-5, ARC Easy ≤5×5, SWE 60 Django/
 
 ## How to read a row
 
-- **Official** is the maintainer page or paper that defines the split. If the suite is one of the 47 in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md), that card is the definition; otherwise the Official column here is the definition.
+- **Official** is the maintainer page or paper that defines the split. If the suite is one of the 47, the card under [`benchmarks/`](benchmarks/) is the definition (index: [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md)); otherwise the Official column here is the definition.
 - **This cohort** is how these 16 papers used it (often a subset, a rewrite, or the same set for search and score).
 - **Upstream SOTA** is a pointer, not a second grade. Independent aggregators disagree; prefer the official board when it exists.
 

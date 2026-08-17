@@ -1,6 +1,6 @@
 # Paper files
 
-One file per paper. Letters and calibration live in [`RUBRICS.md`](../RUBRICS.md). Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](../BENCHMARKS.md). Official task sets, pins, and L/R live in [`UPSTREAM_BENCHMARKS.md`](../UPSTREAM_BENCHMARKS.md).
+One file per paper. Letters and calibration live in [`RUBRICS.md`](../RUBRICS.md). Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](../BENCHMARKS.md). Glossary, L/R, and the 47-name index live in [`UPSTREAM_BENCHMARKS.md`](../UPSTREAM_BENCHMARKS.md). Official cards live under [`benchmarks/`](../benchmarks/).
 
 Each file was written from the preprint plus the official repo when one exists. Third-party reimplementations are named and not used as the experimental harness.
 

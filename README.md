@@ -9,7 +9,8 @@ Scoring and evidence for 16 top-conference papers on prompt evolution, workflow 
 | [RUBRICS.md](RUBRICS.md) | How letters are built, the grade board, and cohort calibration |
 | [papers/](papers/) | One paper per file: preprint + official code, control flow, binding quotes |
 | [BENCHMARKS.md](BENCHMARKS.md) | How these 16 papers used a slice (not the official leaderboard) |
-| [UPSTREAM_BENCHMARKS.md](UPSTREAM_BENCHMARKS.md) | 47 official task sets, how they are scored, L/R, version pins |
+| [UPSTREAM_BENCHMARKS.md](UPSTREAM_BENCHMARKS.md) | Glossary, L/R, and the 47-name index |
+| [benchmarks/](benchmarks/) | Official cards, one file per category |
 | [PEDANTIC_CORRECTION_PASS.md](PEDANTIC_CORRECTION_PASS.md) | Primary-source check against the original audit (historical v1 letters) |
 
 Interactive boards live in the Cursor canvas folder for this workspace (`rsi-harness-grades-round2`, `rsi-harness-calibration`, `rsi-harness-rubrics-v2`).

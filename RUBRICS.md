@@ -225,18 +225,18 @@ Until a level-2 card is filled, RSI stays 0 or 1, including papers with "Gödel"
 
 ## Official suite versus this experiment’s slice
 
-The official task set (items, metric, version pin) for each of the 47 mapped suites is in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md). What these 16 papers actually ran is in [`BENCHMARKS.md`](BENCHMARKS.md) and the paper file. A headline on a slice is not a score on the official set.
+The official task set (items, metric, version pin) for each of the 47 mapped suites is the card under [`benchmarks/`](benchmarks/), indexed from [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md). What these 16 papers actually ran is in [`BENCHMARKS.md`](BENCHMARKS.md) and the paper file. A headline on a slice is not a score on the official set.
 
 This is wording, not a new Eval ceiling. Letters on the grade board below do not move in this pass.
 
 | Mix-up | Official fact | This cohort |
 |---|---|---|
-| SWE-bench Verified | 500 human-checked issues ([map](UPSTREAM_BENCHMARKS.md#swe-bench-verified)) | DGM/HGM bake-off is 60 (35 Django / 25 Sphinx). HGM’s 8,000-eval run is all 500, same-set, already Eval D |
+| SWE-bench Verified | 500 human-checked issues ([map](benchmarks/coding.md#swe-bench-verified)) | DGM/HGM bake-off is 60 (35 Django / 25 Sphinx). HGM’s 8,000-eval run is all 500, same-set, already Eval D |
 | MATH | Not one of the 47; definition stays in [`BENCHMARKS.md`](BENCHMARKS.md) | AFlow / MaAS / MASS reuse a 617 level-5, four-category slice. MASS 60 val / 100 test. Not full MATH |
-| GPQA Diamond | 198 Diamond / 448 main ([map](UPSTREAM_BENCHMARKS.md#gpqa-diamond)) | ADAS / Gödel val is 32 items |
-| AIME | Map card is **AIME 2026** ([map](UPSTREAM_BENCHMARKS.md#aime-2026)). 2023/2024/2025 are different contests | ShinkaEvolve searches AIME 2024, then reports 2023/2025 |
-| OSWorld | v1 is 369 Ubuntu tasks ([map](UPSTREAM_BENCHMARKS.md#osworld-v1)); 2.0 is 108 long workflows ([map](UPSTREAM_BENCHMARKS.md#osworld-20)) | These 16 papers did not run OSWorld. The two names are not one suite |
-| GAIA vs GAIA2 | 466 short answers ([map](UPSTREAM_BENCHMARKS.md#gaia)) vs 800 event-driven scenarios ([map](UPSTREAM_BENCHMARKS.md#gaia2)) | Pin the name. Do not treat a vendor “GAIA” cell as GAIA2 |
+| GPQA Diamond | 198 Diamond / 448 main ([map](benchmarks/multimodal-safety-reasoning.md#gpqa-diamond)) | ADAS / Gödel val is 32 items |
+| AIME | Map card is **AIME 2026** ([map](benchmarks/multimodal-safety-reasoning.md#aime-2026)). 2023/2024/2025 are different contests | ShinkaEvolve searches AIME 2024, then reports 2023/2025 |
+| OSWorld | v1 is 369 Ubuntu tasks ([map](benchmarks/general-agents.md#osworld-v1)); 2.0 is 108 long workflows ([map](benchmarks/tools-web-computer.md#osworld-20)) | These 16 papers did not run OSWorld. The two names are not one suite |
+| GAIA vs GAIA2 | 466 short answers ([map](benchmarks/tools-web-computer.md#gaia)) vs 800 event-driven scenarios ([map](benchmarks/general-agents.md#gaia2)) | Pin the name. Do not treat a vendor “GAIA” cell as GAIA2 |
 
 Do not read the last two rows as cohort results. They exist so a pasted vendor table cannot merge the names.
 
@@ -244,7 +244,7 @@ Do not read the last two rows as cohort results. They exist so a pasted vendor t
 
 ## Grade board (code-checked 16 August 2026)
 
-Letters live here. Evidence lives in [`papers/`](papers/). Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](BENCHMARKS.md). Official task sets, pins, and L/R live in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md).
+Letters live here. Evidence lives in [`papers/`](papers/). Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](BENCHMARKS.md). Glossary, L/R, and the 47-name index live in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md). Official cards live under [`benchmarks/`](benchmarks/).
 
 **Cite the row, not the PDF.** GEPA is B+ only for the main train/validation/test tables. KernelBench in the same paper is D.
 
