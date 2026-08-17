@@ -1,6 +1,6 @@
 # Pedantic Correction Pass — Harness / RSI Audit
 
-**Rubrics:** v1 letters in this file are historical. Scoring rules are in [`RUBRICS.md`](RUBRICS.md). Scored rows and calibration are in [`GRADE_BOARD.md`](GRADE_BOARD.md). Paper evidence (preprint + official code) is in [`papers/`](papers/).
+**Rubrics:** v1 letters in this file are historical. Scoring rules are in [`RUBRICS.md`](RUBRICS.md). Scored rows and calibration are in [`GRADE_BOARD.md`](GRADE_BOARD.md). Paper evidence (preprint + official code) is in [`papers/`](papers/). The captured source writeup now lives in [`REPORT.md`](REPORT.md).
 
 **Date:** 2026-08-16  
 **Method:** Primary-source verification against arXiv/ACL HTML for all 16 papers in the user’s audit.  

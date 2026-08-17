@@ -23,7 +23,7 @@ Do not read the last two rows as cohort results. They exist so a pasted vendor t
 
 ## Grade board (code-checked 16 August 2026)
 
-Letters live here. Evidence lives in [`papers/`](papers/). Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](BENCHMARKS.md). Glossary, L/R, and the 47-name index live in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md). Official cards live under [`benchmarks/`](benchmarks/).
+Letters live here. Evidence lives in [`papers/`](papers/). A captured long-form narrative of the same cohort is in [`REPORT.md`](REPORT.md); letters there do not override this board. Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](BENCHMARKS.md). Glossary, L/R, and the 47-name index live in [`UPSTREAM_BENCHMARKS.md`](UPSTREAM_BENCHMARKS.md). Official cards live under [`benchmarks/`](benchmarks/).
 
 **Cite the row, not the PDF.** GEPA is B+ only for the main train/validation/test tables. KernelBench in the same paper is D.
 

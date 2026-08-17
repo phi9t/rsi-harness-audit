@@ -1,6 +1,6 @@
 # Paper files
 
-One file per paper. Scoring rules live in [`RUBRICS.md`](../RUBRICS.md). Letters and calibration live in [`GRADE_BOARD.md`](../GRADE_BOARD.md). Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](../BENCHMARKS.md). Glossary, L/R, and the 47-name index live in [`UPSTREAM_BENCHMARKS.md`](../UPSTREAM_BENCHMARKS.md). Official cards live under [`benchmarks/`](../benchmarks/).
+One file per paper. Scoring rules live in [`RUBRICS.md`](../RUBRICS.md). Letters and calibration live in [`GRADE_BOARD.md`](../GRADE_BOARD.md). The captured long-form corpus narrative lives in [`REPORT.md`](../REPORT.md); letters there do not override this table. Cohort slices and SOTA pointers live in [`BENCHMARKS.md`](../BENCHMARKS.md). Glossary, L/R, and the 47-name index live in [`UPSTREAM_BENCHMARKS.md`](../UPSTREAM_BENCHMARKS.md). Official cards live under [`benchmarks/`](../benchmarks/).
 
 Each file was written from the preprint plus the official repo when one exists. Third-party reimplementations are named and not used as the experimental harness.
 
