@@ -10,7 +10,7 @@ Letters below are **pending** until each family is re-run. Names match the pre-r
 
 | Paper | Best Eval | Headline Eval | Search method | Typical object | RSI |
 |---|---|---|---|---|---|
-| [PromptBreeder](papers/promptbreeder.md) | pending | pending | pending | pending | pending |
+| [PromptBreeder](papers/promptbreeder.md) | B− | B− | C | C | 1 |
 | [GPTSwarm](papers/gptswarm.md) | pending | pending | pending | pending | pending |
 | [STOP](papers/stop.md) | pending | pending | pending | pending | pending |
 | [DiscoPOP](papers/discopop.md) | pending | pending | pending | pending | pending |
@@ -20,8 +20,8 @@ Letters below are **pending** until each family is re-run. Names match the pre-r
 | [Gödel Agent](papers/godel-agent.md) | pending | pending | pending | pending | pending |
 | [Self-Developing](papers/self-developing.md) | pending | pending | pending | pending | pending |
 | [MaAS](papers/maas.md) | pending | pending | pending | pending | pending |
-| [GEPA](papers/gepa.md) | pending | pending | pending | pending | pending |
-| [ACE](papers/ace.md) | pending | pending | pending | pending | pending |
+| [GEPA](papers/gepa.md) | B− | B− | B | C+ | 0 |
+| [ACE](papers/ace.md) | B− offline | mixed | B | C | 0 |
 | [MASS](papers/mass.md) | pending | pending | pending | pending | pending |
 | [ShinkaEvolve](papers/shinkaevolve.md) | pending | pending | pending | pending | pending |
 | [DGM](papers/dgm.md) | pending | pending | pending | pending | pending |
@@ -31,13 +31,18 @@ Letters below are **pending** until each family is re-run. Names match the pre-r
 
 | Experiment | Axis | Old | New | Recipe step |
 |---|---|---|---|---|
-| *(none yet)* | | | | |
+| GEPA main, four tasks | Eval | B+ | B− | Test monitoring: “optimal test” envelopes and test-vs-budget figures. Two hygiene misses (no search repeats + test monitoring). Matched MIPROv2 rollouts cannot supply plus once minus is required. |
+| ACE offline AppWorld / finance | Eval | B+ | B− | Test monitoring: Appendix A.6 reports reflection-iteration, dedup, and length sweeps on AppWorld test-normal and FiNER test, then treats 3–5 rounds / 50–90% / 10K–100K as reasonable defaults. Two hygiene misses (no construction repeats + test monitoring). Train-then-freeze is not an A-axis item once defaults were read off test. |
 
 ## Held
 
 | Experiment | Axis | Letter | Recipe step that kept it |
 |---|---|---|---|
-| *(none yet)* | | | |
+| PromptBreeder, arithmetic/GSM8K held-out half | Eval / Search / Object / RSI | B− / C / C / 1 | See 2, leftover test. Two misses already (no search repeats; borrowed OPRO/davinci rows). No new test-monitoring evidence in the preprint. Taxonomy 1/model-specific strings stay object C. |
+| GEPA KernelBench, 35 kernels | Eval / Search / Object / RSI | D / B / C / 0 | See 3 unchanged. Same 35 kernels in \(D_{train}\) and \(D_{pareto}\). |
+| GEPA main | Search / Object / RSI | B / C+ / 0 | Searcher vs MIPROv2/GRPO under a shared rollout cap still holds. Prompts are portable task recipes (taxonomy 4, not isolated) → C+. Outer loop frozen → 0. |
+| ACE offline | Search / Object / RSI | B / C / 0 | Updater vs GEPA/ReAct still a searcher comparison. Playbook stores app APIs (instance facts) → C. |
+| ACE online, shuffled test stream | Eval / Search / Object / RSI | C / B / C / 0 | Prequential-on-test cap unchanged. |
 
 ## Experiment grades (pre-round copy)
 
@@ -47,11 +52,11 @@ Columns match [`GRADE_BOARD.md`](GRADE_BOARD.md). Letters in this section are th
 
 | Experiment | See | Eval | Search | Object | RSI | Binding reason (old) |
 |---|---|---|---|---|---|---|
-| PromptBreeder, arithmetic/GSM8K held-out half | 2 | **B−** | C | C | 1 | old, pending regrade |
-| GEPA main, four tasks, Qwen / GPT-4.1 Mini | 2 | **B+** | B | C+ | 0 | old, pending regrade |
-| GEPA KernelBench, 35 kernels | 3 | **D** | B | C | 0 | old, pending regrade |
-| ACE offline AppWorld / finance | 1 | **B+** | B | C | 0 | old, pending regrade |
-| ACE online, shuffled test stream | — | **C** | B | C | 0 | old, pending regrade |
+| PromptBreeder, arithmetic/GSM8K held-out half | 2 | **B−** | C | C | 1 | Held. See 2, leftover test. No search repeats; borrowed OPRO/davinci rows. No test-monitoring evidence. `SOLUTION` is a control string (taxonomy 1). RSI 1: mutation prompts coevolve. No official code. |
+| GEPA main, four tasks, Qwen / GPT-4.1 Mini | 2 | **B−** | B | C+ | 0 | See 2: val is \(D_{pareto}\) every round; Table 1 winner is val. Test-vs-budget / “optimal test” envelopes fail test monitoring, so plus from matched MIPROv2 rollouts does not apply. Two misses → B−. Search B and object C+ held. Table 1: Qwen 48.85 → 61.28; GPT-4.1 Mini GEPA 66.97. |
+| GEPA KernelBench, 35 kernels | 3 | **D** | B | C | 0 | Held. Search and report use the same 35 kernels (`D_train` = `D_pareto`). |
+| ACE offline AppWorld / finance | 1 | **B−** | B | C | 0 | Algorithm: playbook from train, freeze, original test (See 1). Paper A.6 sweeps reflection rounds on AppWorld test-normal and length/dedup on FiNER test, then names those ranges as defaults. Test monitoring + no construction repeats → B−. Object C: Figure 3 app APIs. Search B held. |
+| ACE online, shuffled test stream | — | **C** | B | C | 0 | Held. Predict, then learn from that test outcome. Real streaming protocol. Not frozen held-out accuracy. |
 
 #### Workflows
 
