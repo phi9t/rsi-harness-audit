@@ -6,7 +6,7 @@ Official task sets for this family. Glossary, L/R definitions, and the 47-name i
 
 This family is long-horizon work in a large world: live MCP servers, open-web search, a simulated bank with a knowledge base, a real Ubuntu desktop, a containerized CLI, a professional deliverable, or an event-driven office. The shared Given is a natural-language job plus tools and state. The shared Success is not whether the write-up sounded right. MCP Atlas scores **claim coverage** (atomic claims grounded in tool outputs; a task passes if coverage is at least 0.75). τ-Knowledge checks the final database and reports **pass^k** (the chance that k independent trials all succeed). OSWorld v1 checks desktop files and UI. GDPval uses expert pairwise ranking of a work product. SkillsBench measures **skill lift**: the same task with versus without a curated skill bundle.
 
-Do not mix the task set with the harness. A Codex or OpenHands number on OSWorld is model plus harness, not a model-only score. **GDPval-AA** is GDPval tasks plus an Artificial Analysis (AA) harness and pairwise ranking, not a second task set. SkillsBench "With Skills" is one condition of SkillsBench, not a second suite.
+Do not mix the task set with the harness. A Codex or OpenHands number on OSWorld is model plus harness, not a model-only score. **GDPval-AA** is GDPval tasks plus an Artificial Analysis (AA) harness and pairwise ranking, not a second task set. SkillsBench “With Skills” is one condition of SkillsBench, not a second suite.
 
 OSWorld v1 is 369 Ubuntu tasks. A vendor cell labeled OSWorld is not automatically v1, and it is not OSWorld 2.0 (hour-scale workflows in [`tools-web-computer.md`](tools-web-computer.md)). OSWorld-Verified is a snapshot of v1 tasks and graders, not a different family. MCP Atlas here is 1,000 tasks over 36 servers; MCP-Universe is a different suite in the tools/web file. τ-Knowledge / τ-Banking is not the original τ-bench airline/retail pair.
 
@@ -112,6 +112,6 @@ OSWorld v1 is 369 Ubuntu tasks. A vendor cell labeled OSWorld is not automatical
 
 These 16 papers did not run any of the eight suites in this file, including OSWorld v1.
 
-GPTSwarm's GAIA row is the older GAIA set in [`tools-web-computer.md`](tools-web-computer.md): a hand-built swarm, not search, and not GAIA2.
+GPTSwarm’s GAIA row is the older GAIA set in [`tools-web-computer.md`](tools-web-computer.md): a hand-built swarm, not search, and not GAIA2.
 
 Slice rows and SOTA pointers: [`BENCHMARKS.md`](../BENCHMARKS.md).
