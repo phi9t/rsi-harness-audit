@@ -4,7 +4,13 @@ Official task sets for this family. Glossary, L/R definitions, and the 47-name i
 
 ## What this family measures
 
-PLACEHOLDER_ESSAY
+This file is the rest of the 47: extra coding suites, research replications, vision-math, long context, memory, harm, and closed research problems. It is not one capability. Compare along a track (coding, research, long context), not as one leaderboard.
+
+LiveCodeBench and BigCodeBench report **pass@1** (one sample succeeds), not pass^k. They are contest-style code with hidden or fresh tests, not HumanEval (HumanEval is not in the 47). SWE-bench Multilingual is repository repair across languages; it is not SWE-bench Verified in [`coding.md`](coding.md).
+
+PaperBench and ResearchClawBench are L7 / R5: a research deliverable with a rubric and many valid paths. FrontierMath is L0 / R5: one closed problem, no tools. ARC-AGI-2 is exact grid match on ARC-AGI-2 public eval unless a hidden set is named. It is not ARC-AGI-1 and not this cohort’s ARC Easy ≤5×5 slice.
+
+RULER is a controlled needle/aggregation probe. LongBench v2 and AA-LCR are realistic long documents. BEAM (memory dialogues) lives in the multimodal file; LongMemEval-V2 here is memory over accumulated agent history. AgentHarm is harmful user goals plus whether the agent can carry them out; it is not AgentDojo (injections in untrusted tool data).
 
 ## Cards
 
@@ -166,4 +172,10 @@ PLACEHOLDER_ESSAY
 
 ## This cohort
 
-PLACEHOLDER_TAIL
+**Ran.** LiveCodeBench: MASS used a small subset and three test executions of one topology; that ± is not search.
+
+**Skipped in this file.** BigCodeBench, SWE-bench Multilingual, PaperBench, ResearchClawBench, MathVista, Video-MMMU, LongBench v2, RULER, LongMemEval-V2, AgentHarm, FrontierMath, ARC-AGI-2.
+
+**Not in the 47.** ADAS “ARC” is Easy, grids ≤5×5, 20 val / 60 test—not ARC-AGI-2. MATH (617 level-5 slice) is not FrontierMath.
+
+Slice rows and SOTA pointers: [`BENCHMARKS.md`](../BENCHMARKS.md).
