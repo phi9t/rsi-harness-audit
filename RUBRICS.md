@@ -51,6 +51,16 @@ Every example here is **fictitious. Not a cohort paper.** They belong to **Plove
 
 **Recursive self-improvement (RSI).** Later systems are better at carrying out the *next* improvement cycle, not merely better at the benchmark used to select them. Task score of a system A is Q(A): average success on tasks. Improvement ability I(A) is how good the children of A are, under a fixed model, tool set, mutation budget, and hidden evaluator. A lineage heuristic that pools descendant *task* success and uses it to pick whom to expand is still a search rule over Q. It is not an I(A) experiment.
 
+**Researcher-level test monitoring.** The searcher is nominally driven by training or validation, but the paper plots test after every iteration, chooses defaults on test, or scores every candidate on test before freeze. Stencil-peek: parent pick uses the 20 val items; Figure 4 still plots the 40 test items each generation. That does not prove the optimizer ate test labels. It blocks Eval A and the “untouched confirmatory” reading. It is not automatic D.
+
+**Outer-loop search variance.** The uncertainty that matters for “the method finds better agents” is \(\operatorname{Var}_s[Q(\operatorname{Search}(s))]\): rerun the *complete* search. Rookery’s ± over three executions of one chosen graph is not this quantity.
+
+**Reported-gain split.** A headline delta is artifact + test-time compute + model substitution + selection noise + benchmark exposure + baseline mismatch. Rookery’s 10-call graph vs one-call prompting mixes artifact with extra calls. Writer-Large writing a policy for Solver-Small mixes artifact with model substitution.
+
+**Winner’s curse.** After \(K\) adaptive queries, the selected \(\widehat q_{k^*}\) is biased high even if all candidates are equal. Plumb screens about 100 formulas on Click-Pref and reports only TwistB from one pipeline.
+
+**Granularity.** When one task is a large fraction of the reported percentage, unpaired aggregates cannot carry a close call. Nock-100 test is 40 items, so one item is 2.5 points.
+
 ---
 
 ## The three grades
@@ -66,7 +76,7 @@ Empty bands are allowed. Eval A, Discovery A, and RSI 2–3 are defined here eve
 
 Plus and minus are defined, not decorative:
 
-- **Plus:** meets the letter, and also hits one requirement of the letter above (example: B with matched searcher budgets, or a true train-then-freeze split → B+).
+- **Plus:** meets the letter, and also hits one requirement of the letter above (example: B with matched searcher budgets, or a true train-then-freeze split → B+). A test-oracle envelope is not an A-axis item.
 - **Minus:** meets the letter’s main firewall, but fails two other checklist items (no search repeats *and* a tiny subset is already two).
 - If two experiments disagree, they get two rows. Do not average them into B±.
 
@@ -109,12 +119,15 @@ Score the prompt that chose the edit, not only the agent that solves tasks. Latc
 | Check | Pass | Fail, with fictitious evidence |
 |---|---|---|
 | **Search was repeated** | The whole search is rerun (`≥5` cheap methods, `≥3` expensive). Report median and spread of those runs. | Stencil main is one search. A five-run toy loop would pass this row and still need the rest. |
-| **The ± is about search** | Error bars over independent searches. | Rookery ± is three test executions of one chosen graph. That answers “would this harness get a different score if we resampled answers?”, not “would another search find an equally good harness?” |
+| **The ± is about search** | Error bars over independent complete searches, i.e. an estimate of \(\operatorname{Var}_s[Q(\operatorname{Search}(s))]\). | Rookery ± is three test executions of one chosen graph. That answers “would this harness get a different score if we resampled answers?”, not “would another search find an equally good harness?” |
 | **Compute match** | Same model, calls, tokens, tools. | Writer-Large writes the policy; Solver-Small runs it; the table is sold as one harness. Exclude that row from same-model harness comparisons. |
 | **Fair search space** | Random search, evolution without an LM, and humans get the same candidate language and budget. | Plumb: ~100 proposed formulas vs an eight-point mix grid. |
 | **Honest population** | Full official split, or a split frozen before seeing results. | Rookery reports 31/80 on its 80% test. That is not all of Nock-100. A filter that keeps only “easy” diagrams is the same miss. |
-| **Honest selection** | Report the fitness winner on held-out data, or say in advance you will highlight a different object and why. | Plumb: TwistB is not the Click-Pref winner and not the Note-Sum winner. Error bars among MixA / MixC / TwistB overlap. |
+| **Honest selection** | Report the fitness winner on held-out data, or say in advance you will highlight a different object and why. | Plumb: TwistB is not the Click-Pref winner and not the Note-Sum winner. Error bars among MixA / MixC / TwistB overlap. Plumb also reports only the best lineage from one 100-candidate search (winner’s curse). |
 | **Name the protocol** | Caption matches what was done. | Stencil-online sits in the same “test” columns as Stencil-freeze. A hand-built graph labeled as search is not a search result. |
+| **Test monitoring** | Test identities, labels, traces, and aggregate scores stay unused until the search is frozen. No test curves during search, no defaults chosen on test, no “every candidate on test” plot used as a result. | Stencil-peek: val selects the winner; the paper still plots the 40 test items after every generation. Blocks A. Not D if selection was val-only. A test-oracle envelope is not an A-axis item for B+. |
+| **Reported gain is the artifact** | The comparison isolates the named object from extra calls, a stronger model, and extra exposure. | Rookery 10-call graph vs one-call prompting; Writer-Large / Solver-Small sold as one harness. Fail compute-match as well. |
+| **Granularity** | If one task is ≥1 percentage point of the reported score, the binding reason states the task count (Nock-100 test: 40 items, one item = 2.5 points). | A 2-point gap on 40 items is one task. Unpaired percentages cannot carry that close call. |
 
 ### 6. Letter from what remains
 
@@ -160,6 +173,7 @@ Hard caps on the evolved object:
 - Rebuilt standard tools from a weak start → at most **C**
 - Extra calls or a stronger model could explain the gain → at most **C**
 - Stores instance facts (file paths, city names, app APIs) rather than a portable rule → **C** or **D**
+- Object taxonomy (ceiling, not a separate grade). Parameter tuning, known-component composition, or textbook rediscovery → at most **C**. Task-specific engineering without add/remove isolation → at most **C+**. A mechanistically new artifact (new formula or primitive not reducible to the supplied menu) may enter the B band. Recursive research improvement is an RSI question, not an object letter.
 
 Then: **A** new, working, isolated, repeated, transferred across families. **B** a real new formula or mechanism with some transfer and missing repeats or ablations. **B−** real object whose own tables do not establish superiority. **C+** unusual remix, under-ablated, or a prompt that is a concrete portable procedure. **C** known parts. **C−** recombination table, template leakage, or brute force sold as a new algorithm. **D** cosmetic, unsupported, or nonfunctional.
 
@@ -241,6 +255,10 @@ Is the authors' search method specified? Compared to another searcher?
 
 Is the searcher frozen? Is the reported number task score or child quality?
 Level-2 experiment present?:
+Test monitoring (test plotted / defaults on test / every candidate on test)?:
+Gain split (artifact / extra calls / stronger model / exposure / mixed)?:
+One task equals how many points on the reported set?:
+Object taxonomy (1 tuning … 6 RSI, not object)?:
 
 Hard caps:
 Eval / search-method Discovery / evolved-object Discovery / RSI:
@@ -253,6 +271,8 @@ Eval / search-method Discovery / evolved-object Discovery / RSI:
 Each pair is **fictitious. Not a cohort paper.** Two sentences: pass, then fail.
 
 **See 2 vs A.** Stencil main reuses the 20 val items every round and never touches the 40 test items. Held-out test is real; Eval cannot be A.
+
+**Test monitoring (Stencil-peek).** Stencil still selects on the 20 val items, but the paper plots the 40 test items after every generation and highlights the best test point. Eval cannot be A. Plus cannot be claimed from that envelope. Not D: the optimizer did not receive test labels.
 
 **See 2-rewrite.** Rookery splits 20/80, then keeps only high-variance val items after five blank runs. The 80% test exists; max Eval is B−.
 
