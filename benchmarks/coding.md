@@ -4,7 +4,13 @@ Official task sets for this family. Glossary, L/R definitions, and the 47-name i
 
 ## What this family measures
 
-PLACEHOLDER_ESSAY
+This family is software work with a deterministic check: repository repair, long-horizon terminal tasks, or research functions with unit tests. The shared Given is code, tests, and (for SWE-bench) a real repo. The shared Success is tests, not a judge of the patch write-up.
+
+**fail-to-pass** tests fail on the original code and must pass after the patch. SWE-bench Pro’s resolve rate requires that plus no regressions. That is not the same as “the tests passed” on a lucky subset. SWE-bench Verified is 500 human-checked issues scored by repository tests. SWE-bench Pro is a harder held-out set. SWE-bench Multilingual is a different task set in [`coding-research-context-frontier.md`](coding-research-context-frontier.md); do not quote a Verified number as Multilingual.
+
+SciCode is L1 / R5: function tests at research-level science, not repository repair. Terminal-Bench 2.1 is a live terminal with expert tasks, not a single script with public unit tests.
+
+A Codex or OpenHands score on SWE-bench is model plus harness. Do not treat SWE-bench Lite (this cohort only; not in the 47) as Verified.
 
 ## Cards
 
@@ -58,4 +64,10 @@ PLACEHOLDER_ESSAY
 
 ## This cohort
 
-PLACEHOLDER_TAIL
+**Ran.** SWE-bench Verified: DGM and HGM bake off on 60 issues (35 Django / 25 Sphinx), not the 500. HGM’s 8,000-eval run is all 500 on the same set used in search.
+
+**Skipped in this file.** SWE-bench Pro, Terminal-Bench 2.1, SciCode.
+
+**Not in the 47.** SWE-bench Lite, HumanEval, KernelBench, Polyglot, and ALE-Bench LITE appear in this cohort’s coding table. They are not cards here.
+
+Slice rows and SOTA pointers: [`BENCHMARKS.md`](../BENCHMARKS.md).
