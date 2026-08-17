@@ -7,6 +7,7 @@ This file is a captured long-form audit of the 16-paper cohort. It is **not** a 
 | Scoring rules | [`RUBRICS.md`](RUBRICS.md) |
 | Official letters | [`GRADE_BOARD.md`](GRADE_BOARD.md) |
 | Per-paper evidence | [`papers/`](papers/) |
+| Build ranking (not letters) | [`METHODS.md`](METHODS.md) |
 | v1 check of this capture | [`PEDANTIC_CORRECTION_PASS.md`](PEDANTIC_CORRECTION_PASS.md) |
 
 This writeup uses a two-axis table (evaluation protocol + artifact/discovery) plus an RSI level. Official letters are the four-axis board (Eval, Search, Object, RSI). Cite the board's **Best Eval** column, not §2.0 here. Where a letter differs, the board wins until a later grading round is requested.

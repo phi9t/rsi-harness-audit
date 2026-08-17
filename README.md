@@ -10,6 +10,7 @@ Scoring and evidence for 16 top-conference papers on prompt evolution, workflow 
 | [GRADE_BOARD.md](GRADE_BOARD.md) | Scored rows, how to cite, cohort calibration |
 | [papers/](papers/) | One paper per file: preprint + official code, control flow, binding quotes |
 | [REPORT.md](REPORT.md) | Captured long-form corpus audit (not official letters; the board wins on conflicts) |
+| [METHODS.md](METHODS.md) | Engineering ranking / flywheel (not official letters) |
 | [BENCHMARKS.md](BENCHMARKS.md) | How these 16 papers used a slice (not the official leaderboard) |
 | [UPSTREAM_BENCHMARKS.md](UPSTREAM_BENCHMARKS.md) | Glossary, L/R, and the 47-name index |
 | [benchmarks/](benchmarks/) | Official cards, one file per category |
