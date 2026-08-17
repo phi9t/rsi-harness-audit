@@ -16,7 +16,7 @@ Each file was written from the preprint plus the official repo when one exists. 
 | [Gödel Agent](godel-agent.md) | 2410.04444 | [Arvid-pku/Godel_Agent](https://github.com/Arvid-pku/Godel_Agent) | C− | C | C− | 1 |
 | [Self-Developing](self-developing.md) | 2410.15639 | none | B− | C | C+ | 0 |
 | [MaAS](maas.md) | 2502.04180 | [bingreeky/MaAS](https://github.com/bingreeky/MaAS) | B− | B− | C | 0 |
-| [GEPA](gepa.md) | 2507.19457 | [gepa-ai/gepa](https://github.com/gepa-ai/gepa) | B+ | B | C+ | 0 |
+| [GEPA](gepa.md) ([loop](gepa-loop.md)) | 2507.19457 | [gepa-ai/gepa](https://github.com/gepa-ai/gepa) | B+ | B | C+ | 0 |
 | [ACE](ace.md) | 2510.04618 | [ace-agent/ace](https://github.com/ace-agent/ace) | B+ | B | C | 0 |
 | [MASS](mass.md) | 2502.02533 | none | B− | B− | C | 0 |
 | [ShinkaEvolve](shinkaevolve.md) | 2509.19349 | [SakanaAI/ShinkaEvolve](https://github.com/SakanaAI/ShinkaEvolve) | B | C+ | B / C | 0 |

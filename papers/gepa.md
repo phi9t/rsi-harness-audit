@@ -52,7 +52,7 @@ MIPROv2 `auto=heavy` (18 instructions × 18 few-shot sets) spent 2,270–6,926 r
 
 ## Control flow (from published code)
 
-Official `gepa-ai/gepa` is the optimizer library. The paper’s four-task harnesses are not checked in. The loop in `src/gepa/core/engine.py` matches Algorithm 1.
+How the published optimizer runs, in code order, is in [`gepa-loop.md`](gepa-loop.md). Official `gepa-ai/gepa` is the optimizer library. The paper’s four-task harnesses are not checked in. The loop in `src/gepa/core/engine.py` matches Algorithm 1.
 
 **Models.** Task modules: Qwen3-8B (T=0.6, top-p 0.95, top-k 20) or GPT-4.1 Mini (T=1.0), same model in every module of a run. Reflection LM: a separate callable (`reflection_lm` / `StatelessReflectionLM`) that rewrites one module’s instruction from traces. GRPO baseline: LoRA on Qwen3-8B, 500 steps × group 12 × 4 instances = 24,000 rollouts; val every 20 steps for early stopping. Merge is not an LLM: it splices module strings from two lineages that share an ancestor.
 
