@@ -4,7 +4,13 @@ Official task sets for this family. Glossary, L/R definitions, and the 47-name i
 
 ## What this family measures
 
-PLACEHOLDER_ESSAY
+This family is tools, websites, and a computer: function calling, a user simulator, self-hosted web, many apps, live MCP servers, open-web browsing, and long desktop workflows. The shared Given is an environment that keeps state. The shared Success is usually that state (final database, site, files), not a chat score.
+
+The Berkeley Function-Calling Leaderboard V4 (BFCL V4) scores single-turn live/non-live by **AST**: call structure, not a string match. ToolSandbox maps turns onto required **milestones** and zeros a trajectory on a **minefield**. τ-bench is the original airline/retail pair with pass^k; it is not τ-Knowledge / τ-Banking in [`general-agents.md`](general-agents.md).
+
+GAIA is 466 short verifiable answers (L3). GAIA2 is 800 event-driven scenarios in the general-agents file (L6). A vendor cell labeled GAIA is not GAIA2. OSWorld 2.0 is 108 hour-scale workflows that can change mid-run; OSWorld v1 (369 Ubuntu tasks) is in [`general-agents.md`](general-agents.md). MCP-Universe is not MCP Atlas (also general-agents): different servers, different metric.
+
+AppWorld checks backend database state after API calls. BrowseComp asks for one obscure fact from the open web; DeepSearchQA (general-agents) asks for an exhaustive set scored by F1.
 
 ## Cards
 
@@ -130,4 +136,8 @@ PLACEHOLDER_ESSAY
 
 ## This cohort
 
-PLACEHOLDER_TAIL
+**Ran.** AppWorld: ACE, offline (train, freeze, original test) and online (prequential on shuffled test). GAIA: GPTSwarm Table 1 is a hand-built swarm; that run is not graph search.
+
+**Skipped in this file.** Berkeley Function-Calling Leaderboard V4, ToolSandbox, τ-bench, WebArena, VisualWebArena, MCP-Universe, BrowseComp, OSWorld 2.0.
+
+Slice rows and SOTA pointers: [`BENCHMARKS.md`](../BENCHMARKS.md).
