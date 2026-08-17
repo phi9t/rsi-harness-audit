@@ -34,7 +34,7 @@ Order below is `GEPAEngine.run` after the seed has been scored on validation, no
 
 If a merge proposer is attached and `use_merge` is on, and `merges_due > 0`, and the previous iteration added a program, the engine tries merge **first**. Merge is not an LLM. `MergeProposer` picks two lineages that share an ancestor and splices module strings: keep a module from parent 1 or parent 2 when one still matches the ancestor and the two parents differ.
 
-If the merge subsample passes the gate below, the engine full-evals, adds the child, and **skips reflection this iteration**. If merge is not scheduled, `propose` returns nothing, or the subsample fails, reflection runs (a failed merge still `continue`s and skips reflection in this pin — that is the “old behavior” comment in `engine.py`).
+If the merge subsample passes the gate below, the engine full-evals, adds the child, and **skips reflection this iteration**. If merge is not scheduled, or `propose` returns nothing, reflection runs. If a merge child is proposed and the subsample fails the gate, this pin still `continue`s and skips reflection (“old behavior” in `engine.py`).
 
 ### Module pick
 
