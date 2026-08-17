@@ -4,7 +4,13 @@ Official task sets for this family. Glossary, L/R definitions, and the 47-name i
 
 ## What this family measures
 
-PLACEHOLDER_ESSAY
+This family mixes static documents, images, video, long context, contest math, PhD science, memory, and injection. The world usually does not keep changing (L0–L2) except AgentDojo, where untrusted tool data can hijack a live loop (L6). Shared Success is the authors’ checker: point-in-box for ScreenSpot-Pro, exact integers for AIME 2026, multiple-choice for GPQA Diamond, a judge or rubric where the card says so—not a new protocol.
+
+AIME 2026 is two 15-question contests, answers 000–999. It is independent of AIME 2025 (and of 2023/2024). Humanity’s Last Exam (HLE) is 2,500 multimodal questions; “HLE — Text, No Tools” is a slice, not a second task set. BEAM is 100 dialogues; BEAM-128K is twenty of those, not a second memory benchmark. OmniDocBench v1.5 is a pinned data-and-matcher release; current main is different.
+
+AgentDojo is the task set. Prompt Siren builds stronger injection attacks against it; report both, and do not add a Prompt Siren `###` heading. CIMemories scores whether a disclosure is necessary or inappropriate given a stored memory.
+
+Do not put these cards on one “easy to hard” line with OSWorld. GPQA Diamond is L0 / R5 (one item, specialist depth). ScreenSpot-Pro is L1 / R2 (one click).
 
 ## Cards
 
@@ -154,4 +160,10 @@ PLACEHOLDER_ESSAY
 
 ## This cohort
 
-PLACEHOLDER_TAIL
+**Ran.** IFBench: GEPA (held-out constraint types). GPQA Diamond: ADAS and Gödel Agent, 32 validation / 166 test items (full Diamond is 198). AIME: the card in this file is **AIME 2026**; ShinkaEvolve searched AIME 2024 and then reported 2023/2025.
+
+**Skipped in this file.** CharXiv, ScreenSpot-Pro, OmniDocBench v1.5, MMMU-Pro, CIMemories, AgentDojo, Humanity’s Last Exam, AA-LCR, BEAM.
+
+**Not in the 47.** MATH, GSM8K, MMLU, HotpotQA/HoVer, and MiniCrosswords are this cohort’s math/QA table, not cards here.
+
+Slice rows and SOTA pointers: [`BENCHMARKS.md`](../BENCHMARKS.md).
