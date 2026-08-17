@@ -89,7 +89,7 @@ Official cards (Given, Success, pin, sketch) are in these files. This page keeps
 |---|---|
 | [MCP Atlas](benchmarks/general-agents.md#mcp-atlas) | L5 / R3 |
 | [DeepSearchQA](benchmarks/general-agents.md#deepsearchqa) | L5 / R4 |
-| [τ-Knowledge / τ-Banking](benchmarks/general-agents.md#τ-knowledge-τ-banking) | L5 / R4 |
+| [τ-Knowledge / τ-Banking](benchmarks/general-agents.md#τ-knowledge--τ-banking) | L5 / R4 |
 | [WildClawBench](benchmarks/general-agents.md#wildclawbench) | L6 / R4 |
 | [GDPval](benchmarks/general-agents.md#gdpval) | L7 / R4 |
 | [GAIA2](benchmarks/general-agents.md#gaia2) | L6 / R4 |

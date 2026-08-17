@@ -85,15 +85,15 @@ PY
 
 Expected: `card count 47` and `closed list ok`.
 
-GitHub heading slugs (used in the 47-name index and rubric links): lowercase; strip characters that are not letters, digits, spaces, underscores, or hyphens (keep Unicode letters such as `τ`); collapse spaces and hyphens. `OSWorld 2.0` → `osworld-20`. `Humanity’s Last Exam` (curly apostrophe) → `humanitys-last-exam`.
+GitHub heading slugs (used in the 47-name index and rubric links): lowercase; strip punctuation (keep Unicode letters such as `τ`, digits, spaces, underscores, hyphens); each remaining space becomes one hyphen; do not collapse `--`. `τ-Knowledge / τ-Banking` → `τ-knowledge--τ-banking`. `OSWorld 2.0` → `osworld-20`. `Humanity’s Last Exam` (curly apostrophe) → `humanitys-last-exam`.
 
 ```python
 import re
 def github_slug(title: str) -> str:
     s = title.lower()
     s = re.sub(r'[^\w\s-]', '', s, flags=re.UNICODE)
-    s = re.sub(r'[-\s]+', '-', s).strip('-')
-    return s
+    s = s.replace(' ', '-')
+    return s.strip('-')
 ```
 
 ---
@@ -273,8 +273,8 @@ root = Path('/Users/phi9t/rsi-harness-audit')
 def github_slug(title: str) -> str:
     s = title.lower()
     s = re.sub(r'[^\w\s-]', '', s, flags=re.UNICODE)
-    s = re.sub(r'[-\s]+', '-', s).strip('-')
-    return s
+    s = s.replace(' ', '-')
+    return s.strip('-')
 
 files = [
     ('benchmarks/general-agents.md', 'General agents'),
@@ -340,8 +340,8 @@ import re
 def github_slug(title: str) -> str:
     s = title.lower()
     s = re.sub(r'[^\w\s-]', '', s, flags=re.UNICODE)
-    s = re.sub(r'[-\s]+', '-', s).strip('-')
-    return s
+    s = s.replace(' ', '-')
+    return s.strip('-')
 assert github_slug('SWE-bench Verified') == 'swe-bench-verified'
 assert github_slug('OSWorld v1') == 'osworld-v1'
 assert github_slug('OSWorld 2.0') == 'osworld-20'
@@ -854,8 +854,8 @@ assert len(links) == 47, len(links)
 def github_slug(title: str) -> str:
     s = title.lower()
     s = re.sub(r'[^\w\s-]', '', s, flags=re.UNICODE)
-    s = re.sub(r'[-\s]+', '-', s).strip('-')
-    return s
+    s = s.replace(' ', '-')
+    return s.strip('-')
 
 for name, rel, slug in links:
     text = (root / rel).read_text()
