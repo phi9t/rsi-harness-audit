@@ -12,7 +12,7 @@
 | Main four tasks, Qwen3-8B / GPT-4.1 Mini | 2 | **B+** | **B** | **C+** | 0 | Train/val/test exist (HoVer 150/300/300). Val is \(D_{pareto}\), scored every round for parent pick and the reported winner. Prompt-optimizer budget matched to MIPROv2 within 10.15%. Search not repeated. Prompts are task recipes, not a new primitive. |
 | Inference-time search: KernelBench 35 kernels (+ NPUEval) | 3 | **D** | **B** | **C** | 0 | Paper puts the same task list in both \(D_{train}\) and \(D_{pareto}\) so GEPA can “overfit” that set. Search and headline share the 35 KernelBench kernels. |
 
-Letters match the [`RUBRICS.md`](../RUBRICS.md) grade board. The preprint does **not** contain AIME / LiveBench-Math splits or an adversarial AIME prepend; those rows are not graded.
+Letters match the [`GRADE_BOARD.md`](../GRADE_BOARD.md) grade board. The preprint does **not** contain AIME / LiveBench-Math splits or an adversarial AIME prepend; those rows are not graded.
 
 ## What they claim
 

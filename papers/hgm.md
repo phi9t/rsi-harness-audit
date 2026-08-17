@@ -17,7 +17,7 @@
 | Same agent on Lite with GPT-5 backbone | mixed | **C** | B | C | 1 | Harness and backbone both change vs the GPT-5-mini search. |
 | Showcased `attempt_error_resolution` | — | — | — | **D** | 1 | Appendix F: logs “Would attempt…”, skips install/fix, `return True`. Not in shipped `best_agent/`. |
 
-Letters match the [`RUBRICS.md`](../RUBRICS.md) grade board.
+Letters match the [`GRADE_BOARD.md`](../GRADE_BOARD.md) grade board.
 
 ## What they claim
 

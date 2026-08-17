@@ -2,11 +2,12 @@
 
 Scoring and evidence for 16 top-conference papers on prompt evolution, workflow search, self-editing agents, and objective discovery.
 
-**Start here:** [RUBRICS.md](RUBRICS.md) (rules, ceilings, grade board, calibration). Then open a file under [papers/](papers/).
+**Start here:** [RUBRICS.md](RUBRICS.md) (how letters are built). Then [GRADE_BOARD.md](GRADE_BOARD.md) (scored rows). Then open a file under [papers/](papers/).
 
 | File | What it is |
 |---|---|
-| [RUBRICS.md](RUBRICS.md) | How letters are built, the grade board, and cohort calibration |
+| [RUBRICS.md](RUBRICS.md) | How letters are built (recipe, fictitious examples) |
+| [GRADE_BOARD.md](GRADE_BOARD.md) | Scored rows, how to cite, cohort calibration |
 | [papers/](papers/) | One paper per file: preprint + official code, control flow, binding quotes |
 | [BENCHMARKS.md](BENCHMARKS.md) | How these 16 papers used a slice (not the official leaderboard) |
 | [UPSTREAM_BENCHMARKS.md](UPSTREAM_BENCHMARKS.md) | Glossary, L/R, and the 47-name index |
@@ -15,4 +16,4 @@ Scoring and evidence for 16 top-conference papers on prompt evolution, workflow 
 
 Interactive boards live in the Cursor canvas folder for this workspace (`rsi-harness-grades-round2`, `rsi-harness-calibration`, `rsi-harness-rubrics-v2`).
 
-Letters did not move after the 16 August 2026 preprint+code pass. Facts that did (GEPA task count and Table 1, Shinka AIME grouping, Self-Developing Figure 11, DGM `big.json` not in the outer loop) are in the grade board at the top of `RUBRICS.md`.
+Letters did not move after the 16 August 2026 preprint+code pass. Facts that did (GEPA task count and Table 1, Shinka AIME grouping, Self-Developing Figure 11, DGM `big.json` not in the outer loop) are in [`GRADE_BOARD.md`](GRADE_BOARD.md).

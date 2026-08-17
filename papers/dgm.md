@@ -14,7 +14,7 @@
 | Polyglot extra eval on the full set, 14.2% → 30.7% | 2r | **C** | C | C | 1 | Solver never sees hidden tests (pass@1). Search used a 10 then 50 slice; 14.2% → 30.7% is a later pass of the winner. One archive run. Do not treat this as a clean SWE number. |
 | SWE-evolved agent on Polyglot, 14.2% → 28.9% | 4→holdout | **C** | C | C− | 1 | Never scored on Polyglot during search. Real transfer of an object grown with SWE private tests in o1. Does not clean the 20→50 claim. |
 
-Letters match the [`RUBRICS.md`](../RUBRICS.md) grade board.
+Letters match the [`GRADE_BOARD.md`](../GRADE_BOARD.md) grade board.
 
 ## What they claim
 

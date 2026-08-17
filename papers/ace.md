@@ -12,7 +12,7 @@
 | Offline AppWorld / FiNER / Formula | 1 | **B+** | **B** | **C** | 0 | Playbook written on train, frozen, original test (pass@1). Val in the published code is checkpoint selection (`best_playbook`), not the writer’s prompt. No full construction repeats. Playbook bullets include AppWorld APIs and auth facts. Updater (generator / reflector / curator + non-LLM ADD merge) is the method. |
 | Online, shuffled test stream | — | **C** | **B** | **C** | 0 | Paper: predict on a test item, then update from that outcome. Code: test a window with the current playbook, then train on that same window. Real streaming protocol. Not frozen held-out accuracy. Same Table 1 “test” columns as offline. |
 
-Letters match the [`RUBRICS.md`](../RUBRICS.md) grade board. Do not average online into the B+.
+Letters match the [`GRADE_BOARD.md`](../GRADE_BOARD.md) grade board. Do not average online into the B+.
 
 ## What they claim
 
